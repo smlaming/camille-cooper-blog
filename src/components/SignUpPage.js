@@ -14,6 +14,9 @@ const SignUpPage = () => {
     const { setUser, forceUserReload } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [userName, setUserName] = useState();
 
 
 
@@ -31,8 +34,9 @@ const SignUpPage = () => {
             await axios.post("http://localhost:8000/users", {
                 uid,
                 email: userEmail,
-                firstName: "John",
-                lastName: "Doe"
+                firstName,
+                lastName,
+                userName,
             });
             forceUserReload(true);
             history.push("/");
@@ -62,6 +66,30 @@ const SignUpPage = () => {
                         margin: "auto",
                     }}
                 >
+                    <TextField
+                        type="text"
+                        value={firstName}
+                        onChange={({ target }) => setFirstName(target.value)}
+                        placeholder="First Name"
+                        style={{ width: "15em" }}
+                    />
+                    <br />
+                    <TextField
+                        type="text"
+                        value={lastName}
+                        onChange={({ target }) => setLastName(target.value)}
+                        placeholder="Last Name"
+                        style={{ width: "15em" }}
+                    />
+                    <br />
+                    <TextField
+                        type="text"
+                        value={userName}
+                        onChange={({ target }) => setUserName(target.value)}
+                        placeholder="Username"
+                        style={{ width: "15em" }}
+                    />
+                    <br />
                     <TextField
                         type="text"
                         value={email}
