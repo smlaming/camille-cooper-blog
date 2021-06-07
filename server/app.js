@@ -46,6 +46,7 @@ app.get("/user", async (req, res) => {
                     uid: user.data.uid,
                     firstName: user.data().firstName,
                     lastName: user.data().lastName,
+                    userName: user.data().userName,
                 })
                 .end();
 
@@ -60,11 +61,12 @@ app.post("/users", async (req, res) => {
     const email = req.body.email
     const firstName = req.body.firstName
     const lastName = req.body.lastName
+    const userName = req.body.userName
 
 
 
     try {
-        await db.collection("user").doc(uid).set({ email, firstName, lastName, uid })
+        await db.collection("user").doc(uid).set({ email, firstName, lastName, userName, uid })
         res.sendStatus(200).end()
     } catch (error) {
         res.sendStatus(500).end()

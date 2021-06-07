@@ -7,7 +7,7 @@ import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 
 
-const LoginPage = () => {
+const SignUpPage = () => {
     document.body.style = 'background:"white";';
 
     const history = useHistory();
@@ -15,29 +15,44 @@ const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const logIn = (e) => {
+
+
+
+    const createAccount = async (e) => {
+
         e.preventDefault();
-
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .then((user) => {
-                setUser(user.user);
-                history.push("/");
-                console.log("logged in as", user.user.email)
-            })
-            .catch((error) => {
-                alert("Incorrect username or password");
-                setPassword("");
+        try {
+            const userCredential = await firebase
+                .auth()
+                .createUserWithEmailAndPassword(email, password);
+            setUser(userCredential.user)
+            const uid = userCredential.user.uid;
+            const userEmail = userCredential.user.email;
+            await axios.post("http://localhost:8000/users", {
+                uid,
+                email: userEmail,
+                firstName: "John",
+                lastName: "Doe"
             });
-    };
+            forceUserReload(true);
+            history.push("/");
+        } catch (error) {
+            if (error.code === "auth/invalid-email") {
+                alert("Invalid Email");
+            } else {
+                alert("This Account already exists");
+            }
 
+            console.log(error);
+        }
+
+    };
 
     return (
         <div>
 
             <div style={{ paddingTop: "5%" }}>
-                <h1>Login</h1>
+                <h1>Sign Up</h1>
                 <form
                     style={{
                         display: "flex",
@@ -64,20 +79,20 @@ const LoginPage = () => {
                     />
 
                     <br />
+
                     <Button
                         type="submit"
                         variant="contained"
                         color="primary"
-                        style={{ width: "7em", backgroundColor: "#2E3B55" }}
-                        onClick={logIn}
+                        style={{ width: "12em", backgroundColor: "#2E3B55" }}
+                        onClick={createAccount}
                     >
-                        Log in
+                        Create Account
         </Button>
-                    <br />
                 </form>
             </div>
 
         </div>
     );
 };
-export default LoginPage;
+export default SignUpPage;
