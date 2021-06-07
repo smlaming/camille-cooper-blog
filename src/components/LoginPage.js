@@ -17,12 +17,14 @@ const LoginPage = () => {
 
     const logIn = (e) => {
         e.preventDefault();
+
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((user) => {
-                setUser(user);
+                setUser(user.user);
                 history.push("/");
+                console.log("logged in as", user.user.email)
             })
             .catch((error) => {
                 alert("Incorrect username or password");
@@ -30,36 +32,6 @@ const LoginPage = () => {
             });
     };
 
-    const createAccount = async (e) => {
-        e.preventDefault();
-
-
-
-
-        e.preventDefault();
-        try {
-            const userCredential = await firebase
-                .auth()
-                .createUserWithEmailAndPassword(email, password);
-            const uid = userCredential.user.uid;
-            const userEmail = userCredential.user.email;
-            await axios.post("/users", {
-                uid,
-                email: userEmail,
-            });
-            forceUserReload(true);
-            history.push("/");
-        } catch (error) {
-            if (error.code === "auth/invalid-email") {
-                alert("Invalid Email");
-            } else {
-                alert("An Error Occured");
-            }
-
-            console.log(error);
-        }
-
-    };
 
     return (
         <div>
@@ -102,16 +74,6 @@ const LoginPage = () => {
                         Log in
         </Button>
                     <br />
-
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        style={{ width: "12em", backgroundColor: "#2E3B55" }}
-                        onClick={createAccount}
-                    >
-                        Create Account
-        </Button>
                 </form>
             </div>
 
