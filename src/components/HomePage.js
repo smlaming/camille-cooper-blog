@@ -7,8 +7,8 @@ export default function HomePage() {
     const { firstName, isLoggedIn } = useContext(UserContext);
     if (isLoggedIn) {
         return (<div>
-            hello {firstName}
-            <br />
+            <br /> Hello <i>{firstName}</i>
+            <br /> <br />
             <Button
                 type="submit"
                 variant="contained"
@@ -19,10 +19,14 @@ export default function HomePage() {
                     window.location.reload();//refresh page
                 }}
             >
-                sign out
+                Sign Out
         </Button>
         </div>)
     }
 
-    return (<div> Hello! you are not logged in</div>)
+    return (<div> <br />
+        Hello! You are not logged in. <br /> <br />
+        <Button variant="contained" color="primary" href="/login">Log In</Button> <br /> <br />
+        <Button variant="contained" color="secondary" href="/signup">Sign Up</Button>
+        </div>)
 }

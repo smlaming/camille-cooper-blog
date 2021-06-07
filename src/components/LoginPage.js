@@ -71,7 +71,7 @@ const LoginPage = () => {
                         style={{ width: "7em", backgroundColor: "#2E3B55" }}
                         onClick={logIn}
                     >
-                        Log in
+                        Log In
         </Button>
                     <br />
                 </form>

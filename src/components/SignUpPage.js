@@ -17,10 +17,7 @@ const SignUpPage = () => {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [userName, setUserName] = useState();
-
-
-
-
+    
     const createAccount = async (e) => {
 
         e.preventDefault();
