@@ -12,11 +12,11 @@ const UserContextProvider = ({ children }) => {
     useEffect(() => {
         if (!user) {
             setRole("none");
+
         } else {
-            fetch("/user?uid=" + user.uid)
+            fetch("http://localhost:8000/user?uid=" + user.uid)
                 .then((res) => res.json())
                 .then((res) => {
-                    setRole(res.role);
                     setFirstName(res.firstName);
                     setLastName(res.lastName);
                     setID(res.uid);

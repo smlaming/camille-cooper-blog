@@ -35,7 +35,6 @@ app.get('/products', (req, res) => {
 })
 app.get("/user", async (req, res) => {
     const uid = req.query.uid;
-
     const user = await db.collection("user").doc(uid).get();
     if (!user.exists) {
         res.send({ role: "none" }).end();
@@ -68,7 +67,6 @@ app.post("/users", async (req, res) => {
         await db.collection("user").doc(uid).set({ email, firstName, lastName, uid })
         res.sendStatus(200).end()
     } catch (error) {
-        //console.log(error)
         res.sendStatus(500).end()
     }
 })
