@@ -4,6 +4,10 @@ import LoginPage from './components/LoginPage'
 import { Route, Switch } from "react-router-dom";
 import React, { Fragment } from "react";
 import Header from "./components/Header"
+import SignUpPage from "./components/SignUpPage"
+import Account from "./components/HomePage"
+
+
 function App() {
   return (
     <div className="App">
@@ -11,13 +15,14 @@ function App() {
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/About" />
-        <Route path="/Home" />
-        <Route path="/Account" component={LoginPage}/>
+        <Route path="/Account" component={Account}/>
         <Route path="/Store" />
         <Route path="/Blog" />
         <Route path="/Forum" />
-        <Route path='/login' component={LoginPage} />
         <Route path="/ShoppingCart" />
+        <Route path='/login' component={LoginPage} />
+        <Route path='/signup' component={SignUpPage} />
+
       </Switch>
     </div>
   );

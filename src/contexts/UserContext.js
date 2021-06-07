@@ -7,19 +7,21 @@ const UserContextProvider = ({ children }) => {
     const [role, setRole] = useState("none");
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
+    const [userName, setUserName] = useState();
     const [id, setID] = useState();
     const [userReload, forceUserReload] = useState("false");
     useEffect(() => {
         if (!user) {
             setRole("none");
+
         } else {
-            fetch("/user?uid=" + user.uid)
+            fetch("http://localhost:8000/user?uid=" + user.uid)
                 .then((res) => res.json())
                 .then((res) => {
-                    setRole(res.role);
                     setFirstName(res.firstName);
                     setLastName(res.lastName);
-                    setID(res.id);
+                    setID(res.uid);
+                    setUserName(res.userName)
                     forceUserReload(false);
                 });
         }
@@ -35,6 +37,7 @@ const UserContextProvider = ({ children }) => {
                 id,
                 firstName,
                 lastName,
+                userName,
                 forceUserReload,
                 setUser,
             }}
