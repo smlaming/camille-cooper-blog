@@ -52,7 +52,7 @@ const SignUpPage = () => {
     return (
         <div>
 
-            <div style={{ paddingTop: "5%" }}>
+            <div style={{ paddingTop: "18%" }}>
                 <h1>Sign Up</h1>
                 <form
                     style={{
