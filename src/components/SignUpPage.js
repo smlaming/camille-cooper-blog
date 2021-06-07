@@ -17,7 +17,7 @@ const SignUpPage = () => {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [userName, setUserName] = useState();
-    
+
     const createAccount = async (e) => {
 
         e.preventDefault();
@@ -28,7 +28,7 @@ const SignUpPage = () => {
             setUser(userCredential.user)
             const uid = userCredential.user.uid;
             const userEmail = userCredential.user.email;
-            await axios.post("http://localhost:8000/users", {
+            await axios.post("http://localhost:8000/user/signup", {
                 uid,
                 email: userEmail,
                 firstName,
