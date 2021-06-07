@@ -19,7 +19,7 @@ const UserContextProvider = ({ children }) => {
                     setRole(res.role);
                     setFirstName(res.firstName);
                     setLastName(res.lastName);
-                    setID(res.id);
+                    setID(res.uid);
                     forceUserReload(false);
                 });
         }

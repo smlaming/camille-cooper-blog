@@ -17,6 +17,7 @@ const LoginPage = () => {
 
     const logIn = (e) => {
         e.preventDefault();
+        e.preventDefault();
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
@@ -34,30 +35,25 @@ const LoginPage = () => {
         e.preventDefault();
 
 
+        const userCredential = await firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password);
+
+        const uid = userCredential.user.uid;
+        const userEmail = userCredential.user.email;
+        await axios.post("http://localhost:8000/users", {
+            uid: uid,
+            email: userEmail,
+            firstName: "John",
+            lastName: "Doe"
+
+        });
+        forceUserReload(true);
+        history.push("/");
 
 
-        e.preventDefault();
-        try {
-            const userCredential = await firebase
-                .auth()
-                .createUserWithEmailAndPassword(email, password);
-            const uid = userCredential.user.uid;
-            const userEmail = userCredential.user.email;
-            await axios.post("/users", {
-                uid,
-                email: userEmail,
-            });
-            forceUserReload(true);
-            history.push("/");
-        } catch (error) {
-            if (error.code === "auth/invalid-email") {
-                alert("Invalid Email");
-            } else {
-                alert("An Error Occured");
-            }
 
-            console.log(error);
-        }
+
 
     };
 
