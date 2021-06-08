@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState();
-    const [role, setRole] = useState("none");
+    const [isAdmin, setIsAdmin] = useState(false);
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [userName, setUserName] = useState();
@@ -12,10 +12,8 @@ const UserContextProvider = ({ children }) => {
     const [transactions, setTransactions] = useState([])
     const [userReload, forceUserReload] = useState("false");
     useEffect(() => {
-        if (!user) {
-            setRole("none");
+        if (user) {
 
-        } else {
             fetch("http://localhost:8000/user/login?uid=" + user.uid)
                 .then((res) => res.json())
                 .then((res) => {
@@ -25,6 +23,7 @@ const UserContextProvider = ({ children }) => {
                     setUserName(res.userName)
                     setTransactions(res.transactions)
                     forceUserReload(false);
+                    setIsAdmin(res.admin)
                 });
         }
     }, [user, userReload]);
@@ -35,7 +34,7 @@ const UserContextProvider = ({ children }) => {
             value={{
                 user,
                 isLoggedIn,
-                role,
+                isAdmin,
                 id,
                 firstName,
                 lastName,

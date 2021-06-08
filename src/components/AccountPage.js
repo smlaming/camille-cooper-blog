@@ -19,7 +19,8 @@ function AccountPage() {
     const handleDelete = async () => {
         if (!window.confirm("Delete Your Account?")) return null;
         await user.delete()
-        await axios.delete("/users", { data: { user: user.uid } })
+        await axios.delete("http://localhost:8000/user/delete", { data: { user: user.uid } })
+        window.location.reload();
         history.push("/")
     }
 
