@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "./header/Header"
 
 import { UserContext } from "../contexts/UserContext";
 import { useContext, useState } from "react";

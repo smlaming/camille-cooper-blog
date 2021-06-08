@@ -13,14 +13,15 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 const useStyles = makeStyles((theme) => ({
   toolbar: {
       backgroundColor: "#c4d5c4",
-      color: "#282828"
+      color: "#29335c"
   },
   toolbarTitle: {
     flex: 4,
-    padding: 10,
-    marginTop: 10,
-    fontFamily: "Lobster",
-    fontSize: 38
+    padding: 17,
+    marginTop: 11,
+    fontFamily: 'Lobster Two',
+    fontSize: 48,
+    fontWeight: "medium"
   },
 }));
 
@@ -52,9 +53,10 @@ export default function Header() {
           noWrap
           className={classes.toolbarTitle}
         >
-          Camille
+          Camille's Corner
         </Typography>
         <Button 
+            className={classes.toolbar}
             button component={Link}
             to="/Account" 
             style={{marginRight:10}} 
@@ -62,6 +64,7 @@ export default function Header() {
           Account
         </Button>
         <IconButton 
+        className={classes.toolbar}
         button component={Link}
         to="/ShoppingCart" 
         style={{marginRight:30}}>
@@ -73,7 +76,7 @@ export default function Header() {
           render={({ location }) => (
             <Fragment>
               <Tabs 
-              TabIndicatorProps={{style: {background:'#383838'}}}
+              TabIndicatorProps={{style: {background:'#29335c'}}}
               className={classes.toolbar}
               centered
               value={location.pathname}>

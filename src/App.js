@@ -3,14 +3,14 @@ import './App.css';
 import LoginPage from './components/LoginPage'
 import { Route, Switch } from "react-router-dom";
 import React, { Fragment } from "react";
-import Header from "./components/Header"
+import Header from "./components/header/Header"
 import SignUpPage from "./components/SignUpPage"
 import Account from "./components/AccountPage"
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ position: "relative" }}>
       <Header></Header>
       <Switch>
         <Route path="/" component={Home} exact />
