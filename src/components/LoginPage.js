@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import firebase from "../firebase/firebase";
 import { TextField, Button, Paper } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
@@ -23,7 +23,7 @@ const LoginPage = () => {
             .signInWithEmailAndPassword(email, password)
             .then((user) => {
                 setUser(user.user);
-                history.push("/");
+                history.push("/account");
                 console.log("logged in as", user.user.email)
             })
             .catch((error) => {
@@ -36,7 +36,7 @@ const LoginPage = () => {
     return (
         <div>
 
-            <div style={{ paddingTop: "20%" }}>
+            <div >
                 <h1>Login</h1>
                 <form
                     style={{
@@ -74,6 +74,9 @@ const LoginPage = () => {
                         Log In
         </Button>
                     <br />
+                    <NavLink className="navbar-item" activeClassName="is-active" to="/signup">
+                        Or Create An Account
+            </NavLink>
                 </form>
             </div>
 
