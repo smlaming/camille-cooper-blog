@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import firebase from "../firebase/firebase";
 import { TextField, Button, Paper } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
@@ -74,6 +74,9 @@ const LoginPage = () => {
                         Log In
         </Button>
                     <br />
+                    <NavLink className="navbar-item" activeClassName="is-active" to="/signup">
+                        Or Create An Account
+            </NavLink>
                 </form>
             </div>
 
