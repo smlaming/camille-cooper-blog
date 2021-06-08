@@ -27,14 +27,10 @@ function AccountPage() {
     return (
         <div>
             <Header />
-
             <h1>My Account</h1>
             <h2>
                 Welcome, {firstName} {lastName}!
       </h2>
-
-            <p>Role: {role} </p>
-
             <Button
                 variant="contained"
                 style={{ color: "#ff6961" }}
