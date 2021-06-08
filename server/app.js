@@ -33,6 +33,7 @@ app.get('/', (req, res) => {
 app.get('/products', (req, res) => {
     getAll("products").then(resp => res.json(resp));
 })
+
 app.get("/user", async (req, res) => {
     const uid = req.query.uid;
     const user = await db.collection("user").doc(uid).get();
@@ -55,6 +56,7 @@ app.get("/user", async (req, res) => {
         }
     }
 });
+
 app.post("/users", async (req, res) => {
     console.log(req.body)
     const uid = req.body.uid;

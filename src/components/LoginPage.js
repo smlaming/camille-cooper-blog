@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import firebase from "../firebase/firebase";
-import { TextField, Button, Paper } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 
