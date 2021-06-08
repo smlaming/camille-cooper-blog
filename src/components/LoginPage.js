@@ -23,7 +23,7 @@ const LoginPage = () => {
             .signInWithEmailAndPassword(email, password)
             .then((user) => {
                 setUser(user.user);
-                history.push("/");
+                history.push("/account");
                 console.log("logged in as", user.user.email)
             })
             .catch((error) => {

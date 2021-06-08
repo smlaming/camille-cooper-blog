@@ -9,6 +9,7 @@ const UserContextProvider = ({ children }) => {
     const [lastName, setLastName] = useState();
     const [userName, setUserName] = useState();
     const [id, setID] = useState();
+    const [transactions, setTransactions] = useState([])
     const [userReload, forceUserReload] = useState("false");
     useEffect(() => {
         if (!user) {
@@ -22,6 +23,7 @@ const UserContextProvider = ({ children }) => {
                     setLastName(res.lastName);
                     setID(res.uid);
                     setUserName(res.userName)
+                    setTransactions(res.transactions)
                     forceUserReload(false);
                 });
         }
@@ -38,6 +40,7 @@ const UserContextProvider = ({ children }) => {
                 firstName,
                 lastName,
                 userName,
+                transactions,
                 forceUserReload,
                 setUser,
             }}

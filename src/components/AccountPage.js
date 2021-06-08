@@ -17,7 +17,7 @@ function AccountPage() {
 
 
     const handleDelete = async () => {
-        if (!window.confirm("Delete Account?")) return null;
+        if (!window.confirm("Delete Your Account?")) return null;
         await user.delete()
         await axios.delete("/users", { data: { user: user.uid } })
         history.push("/")
