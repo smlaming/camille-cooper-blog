@@ -15,7 +15,7 @@ const UserContextProvider = ({ children }) => {
             setRole("none");
 
         } else {
-            fetch("http://localhost:8000/user?uid=" + user.uid)
+            fetch("http://localhost:8000/user/login?uid=" + user.uid)
                 .then((res) => res.json())
                 .then((res) => {
                     setFirstName(res.firstName);
