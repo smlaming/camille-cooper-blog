@@ -52,70 +52,69 @@ const SignUpPage = () => {
     return (
         <div>
 
-            <div style={{ paddingTop: "18%" }}>
-                <h1>Sign Up</h1>
-                <form
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: "2%",
-                        margin: "auto",
-                    }}
+            <h1>Sign Up</h1>
+            <form
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "2%",
+
+                }}
+            >
+                <TextField
+                    type="text"
+                    value={firstName}
+                    onChange={({ target }) => setFirstName(target.value)}
+                    placeholder="First Name"
+                    style={{ width: "15em" }}
+                />
+                <br />
+                <TextField
+                    type="text"
+                    value={lastName}
+                    onChange={({ target }) => setLastName(target.value)}
+                    placeholder="Last Name"
+                    style={{ width: "15em" }}
+                />
+                <br />
+                <TextField
+                    type="text"
+                    value={userName}
+                    onChange={({ target }) => setUserName(target.value)}
+                    placeholder="Username"
+                    style={{ width: "15em" }}
+                />
+                <br />
+                <TextField
+                    type="text"
+                    value={email}
+                    onChange={({ target }) => setEmail(target.value)}
+                    placeholder="Email"
+                    style={{ width: "15em" }}
+                />
+                <br />
+                <TextField
+                    type="password"
+                    value={password}
+                    onChange={({ target }) => setPassword(target.value)}
+                    placeholder="Password"
+                    style={{ width: "15em" }}
+                />
+
+                <br />
+
+                <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    style={{ width: "12em", backgroundColor: "#2E3B55" }}
+                    onClick={createAccount}
                 >
-                    <TextField
-                        type="text"
-                        value={firstName}
-                        onChange={({ target }) => setFirstName(target.value)}
-                        placeholder="First Name"
-                        style={{ width: "15em" }}
-                    />
-                    <br />
-                    <TextField
-                        type="text"
-                        value={lastName}
-                        onChange={({ target }) => setLastName(target.value)}
-                        placeholder="Last Name"
-                        style={{ width: "15em" }}
-                    />
-                    <br />
-                    <TextField
-                        type="text"
-                        value={userName}
-                        onChange={({ target }) => setUserName(target.value)}
-                        placeholder="Username"
-                        style={{ width: "15em" }}
-                    />
-                    <br />
-                    <TextField
-                        type="text"
-                        value={email}
-                        onChange={({ target }) => setEmail(target.value)}
-                        placeholder="Email"
-                        style={{ width: "15em" }}
-                    />
-                    <br />
-                    <TextField
-                        type="password"
-                        value={password}
-                        onChange={({ target }) => setPassword(target.value)}
-                        placeholder="Password"
-                        style={{ width: "15em" }}
-                    />
-
-                    <br />
-
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        style={{ width: "12em", backgroundColor: "#2E3B55" }}
-                        onClick={createAccount}
-                    >
-                        Create Account
+                    Create Account
         </Button>
-                </form>
-            </div>
+            </form>
+
 
         </div>
     );

@@ -7,16 +7,17 @@ import SignUpPage from "./components/SignUpPage"
 import HomePage from "./components/HomePage"
 import Forum from "./components/Forum";
 import Account from "./components/HomePage"
+import Account from "./components/AccountPage"
 
 
 function App() {
   return (
-    <div className="App" style={{position:"relative"}}>
+    <div className="App" style={{ position: "relative" }}>
       <Header></Header>
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/About" />
-        <Route path="/Account" component={Account}/>
+        <Route path="/Account" component={Account} />
         <Route path="/Store" />
         <Route path="/Blog" />
         <Route path="/Forum" />
@@ -32,7 +33,7 @@ function App() {
 
 const Home = () => (
   <Fragment>
-    <h1 style={{marginTop: 160}}>Welcome!!!</h1>
+    <h1 style={{ marginTop: 160 }}>Welcome!!!</h1>
 
   </Fragment>
 );
