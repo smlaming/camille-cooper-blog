@@ -65,8 +65,6 @@ app.post("/users", async (req, res) => {
     const lastName = req.body.lastName
     const userName = req.body.userName
 
-
-
     try {
         await db.collection("user").doc(uid).set({ email, firstName, lastName, userName, uid })
         res.sendStatus(200).end()
@@ -75,6 +73,32 @@ app.post("/users", async (req, res) => {
     }
 })
 
+  app.post("/add_post", (req, res) => {
+    const post = {
+        content: req.body.content,
+        date: req.body.date,
+        name: req.body.name,
+        profileImage: req.body.profileImage
+    };
+    
+    db.collection("forum")
+      .add(post)
+      .then((docRef) => res.json({ ...post, id: docRef.id }));
+  });
+
+    app.get("/all_posts", (req, res) => {
+        const posts = [];
+        db.collection("forum").orderBy('date')
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((post) => {
+                posts.push({ ...post.data(), id: post.id });
+            });
+        })
+        .then(() => res.json(posts));
+  });
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
+

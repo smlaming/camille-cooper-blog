@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 
-
 const LoginPage = () => {
     document.body.style = 'background:"white";';
 
@@ -13,6 +12,7 @@ const LoginPage = () => {
     const { setUser, forceUserReload } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [userName, setUserName] = useState("");
 
     const logIn = (e) => {
         e.preventDefault();
@@ -23,14 +23,15 @@ const LoginPage = () => {
             .then((user) => {
                 setUser(user.user);
                 history.push("/");
-                console.log("logged in as", user.user.email)
+                console.log("logged in as", user.user.email);
+                setUserName(user.user.displayName);
+                console.log("name: " + user.user.displayName);
             })
             .catch((error) => {
                 alert("Incorrect username or password");
                 setPassword("");
             });
     };
-
 
     return (
         <div>
@@ -71,7 +72,7 @@ const LoginPage = () => {
                         onClick={logIn}
                     >
                         Log In
-        </Button>
+                    </Button>
                     <br />
                 </form>
             </div>
