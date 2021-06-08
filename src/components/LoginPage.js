@@ -36,7 +36,7 @@ const LoginPage = () => {
     return (
         <div>
 
-            <div style={{ paddingTop: "5%" }}>
+            <div style={{ paddingTop: "20%" }}>
                 <h1>Login</h1>
                 <form
                     style={{
