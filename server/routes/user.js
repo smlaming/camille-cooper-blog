@@ -17,7 +17,9 @@ app.get("/login", async (req, res) => {
                     firstName: user.data().firstName,
                     lastName: user.data().lastName,
                     userName: user.data().userName,
+                    photo: user.data().photo,
                     transactions: user.data().purchases
+
                 })
                 .end();
 

@@ -8,6 +8,7 @@ const UserContextProvider = ({ children }) => {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [userName, setUserName] = useState();
+    const [photo, setPhoto] = useState();
     const [id, setID] = useState();
     const [transactions, setTransactions] = useState([])
     const [userReload, forceUserReload] = useState("false");
@@ -23,7 +24,10 @@ const UserContextProvider = ({ children }) => {
                     setUserName(res.userName)
                     setTransactions(res.transactions)
                     forceUserReload(false);
+                    setPhoto(res.photo)
+
                     setIsAdmin(res.admin)
+
                 });
         }
     }, [user, userReload]);
@@ -42,6 +46,7 @@ const UserContextProvider = ({ children }) => {
                 transactions,
                 forceUserReload,
                 setUser,
+                photo
             }}
         >
             {children}
