@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: "black",
-    fontFamily: 'Merriweather',
+    // fontFamily: 'Merriweather',
+    fontFamily: 'Inter',
     fontSize: 30
 },
 blurb: {
@@ -24,8 +25,8 @@ blurb: {
     fontFamily: 'Montserrat',
     fontSize: 22},
 descriptext: {
-    fontFamily: 'Montserrat',
-    fontSize: 20
+    fontFamily: 'Inter',
+    fontSize: 20,
 },
 datetext: {
     fontFamily: 'Montserrat',

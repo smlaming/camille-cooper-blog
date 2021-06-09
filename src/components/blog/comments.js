@@ -7,7 +7,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import Eye from "@material-ui/icons/RemoveRedEye"
 import Heart from "@material-ui/icons/Favorite"
-import Comment from "@material-ui/icons/ChatBubble"
+import Comment from "@material-ui/icons/Comment"
 
 const useStyles = makeStyles((theme) => ({
     descriptext: {
@@ -40,6 +40,12 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "bold",
         paddingTop: 10,
         paddingBottom: 10
+    },
+    datetext: {
+        fontFamily: 'Inter',
+        fontSize: 15,
+        marginTop: 10,
+        color: "grey"
     },
   }));
 
@@ -82,11 +88,14 @@ const updateData = () =>{
 }
 
 const AddComment = ()=> {
+    const curDate = new Date();
+
     const theComment = {
         name: firstName,
         photo: photoExist(photo),
         comment: newComment,
-        id: theID
+        id: theID,
+        date: curDate.toLocaleDateString() + " @ " + curDate.toLocaleTimeString(('en-US'), { hour: '2-digit', minute: '2-digit' })
     }
     axios.post("http://localhost:8000/blog/addcomment", theComment)
   .then(response => {
@@ -114,7 +123,7 @@ const AddComment = ()=> {
             <Heart style={{marginLeft:50, marginRight:3}}></Heart> 314
             <Comment style={{marginLeft:50,marginRight:4}}></Comment>{post.length}</div></pre>    
             <div style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginBottom:60
-        }} className={classes.darkblue}>Comments</div>
+        }} className={classes.darkblue}>Comments  ({post.length})</div>
 {isLoggedIn ? <div> 
     <div  style={{float: "left", marginLeft: "400px", borderRadius: "50%", overflow:"hidden",marginTop:25, marginRight:20}}>
             <img style={{width: 80}} src={photoExist(photo)}></img></div>
@@ -135,7 +144,8 @@ style={{width:1050, fontSize: 30, marginBottom:20}} label="Please sign in to lea
     <div>
         <div  style={{float: "left", marginLeft: "400px", borderRadius: "50%", overflow:"hidden"}}>
             <img style={{width: 80}} src={each.photo}></img></div>
-        <div className={classes.title}  style={{textAlign: "justify", marginRight: "400px", marginLeft: "500px"}}>{each.name}</div>
+        <div style={{textAlign: "justify", marginRight: "400px", marginLeft: "500px"}}><span className={classes.title} style={{marginRight:10}}>{each.name}</span>
+        <span className={classes.datetext}>{each.date}</span></div>
         <pre className={classes.descriptext} 
         style={{textAlign: "justify", marginRight: "400px", marginLeft: "500px"}}>
         <div style={{marginBottom:20}}>{each.comment}</div>
