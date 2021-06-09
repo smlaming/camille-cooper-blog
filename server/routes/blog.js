@@ -34,13 +34,14 @@ app.get("/get", async (req, res) => {
   });
 
   app.post("/addcomment", async (req, res) => {
-    const { name, photo, comment, id } = req.body;
+    const { name, photo, comment, date, id } = req.body;
     const resp = await db.collection("blog").doc(id).collection("comments").add({
         name,
         photo,
-        comment
+        comment,
+        date
     });
-    console.log("added document with id: ", resp.id);
+    console.log("added comment with id: ", resp.id);
   });
 
 

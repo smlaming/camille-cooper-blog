@@ -7,7 +7,6 @@ import {Box} from '@material-ui/core';
 //import Heart from "@material-ui/icons/Favorite"
 //import Comment from "@material-ui/icons/ChatBubble"
 
-
 const useStyles = makeStyles((theme) => ({
   darkblue: {
       color: "#2f2c7a",
@@ -19,12 +18,17 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: "black",
-    fontFamily: 'Merriweather',
-    fontSize: 23
+    // fontFamily: 'Merriweather',
+    fontFamily: 'Inter',
+    fontSize: 30
 },
-descriptext: {
+blurb: {
+    color: "black",
     fontFamily: 'Montserrat',
-    fontSize: 20
+    fontSize: 22},
+descriptext: {
+    fontFamily: 'Inter',
+    fontSize: 20,
 },
 datetext: {
     fontFamily: 'Montserrat',
@@ -44,7 +48,6 @@ thecolor :{
 export default function Header() {
   const classes = useStyles();
   const [blog, setBlog] = useState([]);
-//   const [redirect , setRedirect] = useState(false);
   const Loading = () =>{
     if (blog.length === 0) {
         fetch("http://localhost:8000/blog/get")
@@ -59,9 +62,10 @@ export default function Header() {
 
 
   return (
-<div style={{paddingTop: "7.5%"}}>
+<div style={{paddingTop: "1%"}}>
 <h2 style={{marginLeft: 800}}> {Loading()}</h2>
-{/* <h1 className={classes.title} >THE BLOG</h1> */}
+<h1 className={classes.title} >THE LATEST & GREATEST </h1>
+{/* <div className={classes.blurb}>A blog following the journies of the spontaneous digital nomad and social influencer, Camille.</div> */}
 {blog.map((post)=>(
     <Box display="flex" alignItems="center" justifyContent="center" 
     height={300} width={1200}  m={1} 
