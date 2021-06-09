@@ -6,22 +6,22 @@ import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import React, { Fragment } from "react";
-import { Route, Link} from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import Divider from "@material-ui/core/Divider"
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Instagram, Twitter } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
-      backgroundColor: "#c4d5c4",
-      color: "#29335c",
-     
+    backgroundColor: "#c4d5c4",
+    color: "#29335c",
+
   },
   tumblr: {
     color: "#29335c",
     fontFamily: "Helevetica",
-      fontWeight: "bold",
-      fontSize: 28
+    fontWeight: "bold",
+    fontSize: 28
   },
   toolbarTitle: {
     flex: 4,
@@ -45,60 +45,60 @@ export default function Header() {
     { title: 'Store', url: '/Store' },
   ];
 
-  
-  
+
+
 
   return (
     <React.Fragment>
-        <div style={{position:"fixed", width:"100%", top:0, zIndex: 1}}>
-      <Toolbar className={classes.toolbar}>
-      <IconButton 
-        className={classes.toolbar}
-        href="https://www.instagram.com/" 
-        target="_blank"
-        style={{marginLeft:30}}>
-          <Instagram />
-        </IconButton> 
-        <IconButton 
-        className={classes.toolbar}
-        href="https://www.twitter.com/camilles_corner" 
-        target="_blank"
-        style={{marginLeft:10}}>
-          <Twitter />
-        </IconButton> 
-        <IconButton 
-        className={classes.tumblr}
-        href="https://www.tumblr.com/" 
-        target="_blank"
-        style={{marginLeft:10}}>
-          t
-        </IconButton> 
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          className={classes.toolbarTitle}
-        >
-          Camille's Corner
+      <div style={{ position: "fixed", width: "100%", top: 0, zIndex: 1 }}>
+        <Toolbar className={classes.toolbar}>
+          <IconButton
+            className={classes.toolbar}
+            href="https://www.instagram.com/"
+            target="_blank"
+            style={{ marginLeft: 30 }}>
+            <Instagram />
+          </IconButton>
+          <IconButton
+            className={classes.toolbar}
+            href="https://www.twitter.com/camilles_corner"
+            target="_blank"
+            style={{ marginLeft: 10 }}>
+            <Twitter />
+          </IconButton>
+          <IconButton
+            className={classes.tumblr}
+            href="https://www.tumblr.com/"
+            target="_blank"
+            style={{ marginLeft: 10 }}>
+            t
+        </IconButton>
+          <Typography
+            component="h2"
+            variant="h5"
+            color="inherit"
+            align="center"
+            noWrap
+            className={classes.toolbarTitle}
+          >
+            Camille's Corner
         </Typography>
-        <Button 
+          <Button
             className={classes.toolbar}
             button component={Link}
-            to="/Account" 
-            style={{marginRight:10}} 
+            to="/Account"
+            style={{ marginRight: 10 }}
             size="small">
-          Account
+            Account
         </Button>
-        <IconButton 
-        className={classes.toolbar}
-        button component={Link}
-        to="/ShoppingCart" 
-        style={{marginRight:30}}>
-          <ShoppingCartIcon />
-        </IconButton> 
-        {/* <Button 
+          <IconButton
+            className={classes.toolbar}
+            button component={Link}
+            to="/ShoppingCart"
+            style={{ marginRight: 30 }}>
+            <ShoppingCartIcon />
+          </IconButton>
+          {/* <Button 
             className={classes.toolbar}
             button component={Link}
             to="/ShoppingCart" 
@@ -106,32 +106,32 @@ export default function Header() {
             size="small">
           Cart
         </Button> */}
-      </Toolbar>
-      <Route 
+        </Toolbar>
+        <Route
           path="/"
           render={({ location }) => (
             <Fragment>
-              <Tabs 
-              TabIndicatorProps={{style: {background:'#29335c'}}}
-              className={classes.toolbar}
-              centered
-              value={location.pathname}>
-              {sections.map((section) => (
-          <Tab 
-            fontWeight= "bold"
-            label={section.title}
-            value={section.url}
-            button component={Link}
-            to={section.url}
-          >
-          </Tab>
-        ))}
+              <Tabs
+                TabIndicatorProps={{ style: { background: '#29335c' } }}
+                className={classes.toolbar}
+                centered
+                value={location.pathname}>
+                {sections.map((section) => (
+                  <Tab
+                    fontWeight="bold"
+                    label={section.title}
+                    value={section.url}
+                    button component={Link}
+                    to={section.url}
+                  >
+                  </Tab>
+                ))}
               </Tabs>
             </Fragment>
           )}
         />
         <Divider></Divider>
-        </div>
+      </div>
     </React.Fragment>
   );
 }

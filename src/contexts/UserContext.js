@@ -11,6 +11,8 @@ const UserContextProvider = ({ children }) => {
     const [photo, setPhoto] = useState();
     const [id, setID] = useState();
     const [transactions, setTransactions] = useState([])
+    const [shippingAddress, setShippingAddress] = useState(null)
+    const [email, setEmail] = useState();
     const [userReload, forceUserReload] = useState("false");
     useEffect(() => {
         if (user) {
@@ -25,8 +27,8 @@ const UserContextProvider = ({ children }) => {
                     setTransactions(res.transactions)
                     forceUserReload(false);
                     setPhoto(res.photo)
-
                     setIsAdmin(res.admin)
+                    setEmail(user.email)
 
                 });
         }
@@ -44,6 +46,8 @@ const UserContextProvider = ({ children }) => {
                 lastName,
                 userName,
                 transactions,
+                shippingAddress,
+                email,
                 forceUserReload,
                 setUser,
                 photo
