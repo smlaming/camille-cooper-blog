@@ -18,17 +18,16 @@ function App() {
       <Header></Header>
       <Switch>
         <Route path="/" component={Home} exact />
-        <Route path="/About" />
-        <Route path="/Account" component={Account} />
-        <Route path="/Store" />
-        <Route path="/Blog" component={Blog}/>
-        <Route path="/BlogPost" component={BlogPost}/>
-        <Route path="/Forum" component={Forum}/>
-        <Route path="/ShoppingCart" />
+        <Route path="/about" />
+        <Route path="/account" component={Account} />
+        <Route path="/store" />
+        <Route path="/blog" component={Blog}/>
+        <Route path="/blog_post" component={BlogPost}/>
+        <Route path="/forum" component={Forum}/>
+        <Route path="/shopping_cart" />
         <Route path='/login' component={LoginPage} />
-        <Route path='/signup' component={SignUpPage} />
+        <Route path='/sign_up' component={SignUpPage} />
         <Route path='/forum' component={Forum} />
-
       </Switch>
     </div>
   );
@@ -36,8 +35,7 @@ function App() {
 
 const Home = () => (
   <Fragment>
-    <h1 style={{ marginTop: 160 }}>Welcome!!!</h1>
-
+    <h1 style={{ marginTop: 160 }}>Welcome!</h1>
   </Fragment>
 );
 
