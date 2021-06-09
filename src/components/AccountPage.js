@@ -81,7 +81,7 @@ function AccountPage() {
         }
     }, []);
 
-    //this useEffect is only need for inital uploading of photo
+    //this useEffect is only needed for inital uploading of photo
     useEffect(() => {
         handleFireBaseUpload()
     }, [imageAsFile]);
@@ -97,9 +97,8 @@ function AccountPage() {
         e.preventDefault()
         const image = e.target.files[0]
         setImageAsFile(imageFile => (image))
-
-
     }
+    // credit: https://dev.to/itnext/how-to-do-image-upload-with-firebase-in-react-cpj
     const handleFireBaseUpload = e => {
         console.log('start of upload')
         if (imageAsFile === '') {
