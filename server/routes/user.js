@@ -1,6 +1,7 @@
 const express = require('express');
 var app = express.Router();
 const db = require('../firebase');
+const admin = require('firebase-admin');
 
 app.get("/login", async (req, res) => {
     const uid = req.query.uid;
@@ -17,8 +18,9 @@ app.get("/login", async (req, res) => {
                     firstName: user.data().firstName,
                     lastName: user.data().lastName,
                     userName: user.data().userName,
-                    transactions: user.data().purchases,
-                    shippingAddress: user.data().shippingAddress
+                    transactions: user.data().transactions,
+                    shippingAddress: user.data().shippingAddress,
+                    admin: user.data().isAdmin
                 })
                 .end();
 
@@ -45,7 +47,16 @@ app.post("/signup", async (req, res) => {
         res.sendStatus(500).end()
     }
 })
+app.post('/addtransaction', (req, res) => {
+    const userID = req.body.uid;
 
+    const ref = db.collection('user').doc(userID);
+    const unionRes = ref.update({
+        transactions: admin.firestore.FieldValue.arrayUnion(req.body.transaction)
+    });
+    res.send('added a new transacation')
+    console.log(unionRes)
+})
 app.delete('/delete', (req, res) => {
     console.log("deleting")
     const user = req.body.user;

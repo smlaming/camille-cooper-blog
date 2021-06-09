@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     historyContainer: {
         display: "flex",
         flex: 1.5,
+        flexDirection: "column",
+        backgroundColor: "lightgray",
+        boxShadow: "1px 3px 1px #9E9E9E",
         backgroundColor: "lightgray"
     },
     action: {
@@ -54,7 +57,7 @@ function AccountPage() {
     document.body.style = 'background:"white";';
 
     const history = useHistory();
-    const { firstName, lastName, userName, isLoggedIn, user, shippingAddress, email } = useContext(UserContext);
+    const { firstName, lastName, userName, isLoggedIn, user, shippingAddress, email, transactions } = useContext(UserContext);
     const classes = useStyles();
 
 
@@ -121,7 +124,14 @@ function AccountPage() {
                     </div>
                 </div>
                 <div className={classes.historyContainer}>
-                    <TransactionCard />
+                    <h2>Transaction History</h2>
+                    {
+                        transactions.map((t) => {
+                            return (
+                                <TransactionCard name={t.name} date={t.date} price={t.price} />
+                            )
+                        })}
+
                 </div>
             </div>
 
