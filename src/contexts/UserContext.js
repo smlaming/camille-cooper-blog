@@ -8,6 +8,7 @@ const UserContextProvider = ({ children }) => {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [userName, setUserName] = useState();
+    const [photo, setPhoto] = useState();
     const [id, setID] = useState();
     const [transactions, setTransactions] = useState([])
     const [shippingAddress, setShippingAddress] = useState(null)
@@ -25,9 +26,10 @@ const UserContextProvider = ({ children }) => {
                     setUserName(res.userName)
                     setTransactions(res.transactions)
                     forceUserReload(false);
+                    setPhoto(res.photo)
                     setIsAdmin(res.admin)
                     setEmail(user.email)
-                    setShippingAddress(res.shippingAddress)
+
                 });
         }
     }, [user, userReload]);
@@ -48,6 +50,7 @@ const UserContextProvider = ({ children }) => {
                 email,
                 forceUserReload,
                 setUser,
+                photo
             }}
         >
             {children}

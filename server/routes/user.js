@@ -20,8 +20,10 @@ app.get("/login", async (req, res) => {
                     lastName: user.data().lastName,
                     userName: user.data().userName,
                     transactions: user.data().transactions,
-                    shippingAddress: user.data().shippingAddress,
-                    admin: user.data().isAdmin
+                    admin: user.data().isAdmin,
+                    photo: user.data().photo,
+                    transactions: user.data().purchases
+
                 })
                 .end();
 

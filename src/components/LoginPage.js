@@ -6,7 +6,6 @@ import axios from "axios";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 
-
 const LoginPage = () => {
     document.body.style = 'background:"white";';
 
@@ -14,6 +13,7 @@ const LoginPage = () => {
     const { setUser, forceUserReload } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [userName, setUserName] = useState("");
 
     const logIn = (e) => {
         e.preventDefault();
@@ -31,7 +31,6 @@ const LoginPage = () => {
                 setPassword("");
             });
     };
-
 
     return (
         <div>
@@ -72,7 +71,7 @@ const LoginPage = () => {
                         onClick={logIn}
                     >
                         Log In
-        </Button>
+                    </Button>
                     <br />
                     <NavLink className="navbar-item" activeClassName="is-active" to="/signup">
                         Or Create An Account
