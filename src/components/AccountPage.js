@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, TextField, Grid, Card } from "@material-ui/core";
 import firebase from "../firebase/firebase";
 import { useHistory } from "react-router-dom";
+import blank from "./images/blank.png";
 import axios from "axios"
 
 const useStyles = makeStyles((theme) => ({
@@ -24,14 +25,14 @@ const useStyles = makeStyles((theme) => ({
     },
     accountContainer: {
         display: "flex",
-        flex: 1,
+        flex: .8,
         flexDirection: "column",
         margin: 10,
-        padding: 10,
         fontSize: 20,
-        textAlign: "left",
+        textAlign: "center",
         boxShadow: "1px 3px 1px #9E9E9E",
-        backgroundColor: "lightgray",
+        backgroundColor: "#C4D5C4",
+        marginLeft: 30
 
 
 
@@ -42,22 +43,29 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         backgroundColor: "lightgray",
         boxShadow: "1px 3px 1px #9E9E9E",
-        backgroundColor: "lightgray"
+        backgroundColor: "#C4D5C4",
+        fontSize: 20,
+        margin: 10,
+        marginRight: 30
+
     },
     action: {
         display: "flex",
         flexDirection: "row",
-        flex: 1
+        flex: 1,
+        marginBottom: 10
     },
     info: {
         padding: 50,
         display: "flex",
         flexDirection: "column",
 
+
     },
     img: {
         width: "30%",
         height: "auto",
+        alignSelf: "center"
     }
 
 }));
@@ -71,20 +79,24 @@ function AccountPage() {
     const [imageAsFile, setImageAsFile] = useState()
     const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
+    // this useEffect along with the storage and image as url states above can be used on other pages to retrieve images from storage
     useEffect(() => {
         if (user) {
-            try {
-                storage.ref('images').child(user.uid).getDownloadURL()
-                    .then(fireBaseUrl => {
-                        setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
-                        //console.log(fireBaseUrl);
-                    })
-            } catch (err) {
-                console.log("in the catch!")
-                setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" }))
-            }
+            storage.ref('images').child(user.uid).getDownloadURL()
+                .then(fireBaseUrl => {
+                    setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
+                    //console.log(fireBaseUrl);
+                })
+            console.log("here")
         }
     }, []);
+
+    //this useEffect is only needed for inital uploading of photo
+    useEffect(() => {
+        if (user && imageAsFile) {
+            handleFireBaseUpload()
+        }
+    }, [imageAsFile]);
 
     const handleDelete = async () => {
         if (!window.confirm("Delete Your Account?")) return null;
@@ -94,11 +106,12 @@ function AccountPage() {
         history.push("/")
     }
     const handleImageAsFile = (e) => {
+        e.preventDefault()
         const image = e.target.files[0]
         setImageAsFile(imageFile => (image))
     }
+    // credit: https://dev.to/itnext/how-to-do-image-upload-with-firebase-in-react-cpj
     const handleFireBaseUpload = e => {
-        e.preventDefault()
         console.log('start of upload')
         if (imageAsFile === '') {
             console.error(`not an image, the image file is a ${typeof (imageAsFile)}`)
@@ -134,21 +147,25 @@ function AccountPage() {
 
             <div className={classes.body}>
                 <div className={classes.accountContainer}>
+                    <h2 style={{ textAlign: "center" }}>Account Info</h2>
                     <div className={classes.info}>
-                        <form onSubmit={handleFireBaseUpload}>
-                            {imageAsUrl && <img className={classes.img} src={imageAsUrl.imgUrl} alt="img" />}<br />
-                            <input
-                                type="file"
-                                onChange={handleImageAsFile}
-                            />
-                            <Button>Upload</Button>
-                        </form>
-                        <br />
-                        First Name: {firstName} <br />
-                        Last Name : {lastName} <br />
-                        Username: {userName} <br />
-                         Email: {email} <br />
 
+
+                        {imageAsUrl.imgUrl != "" ? <img className={classes.img} src={imageAsUrl.imgUrl} alt="image tag" /> : <img className={classes.img} src={"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png"} alt="image tag" />}<br />
+                        <input
+                            type="file"
+                            onChange={handleImageAsFile}
+                            style={{ alignSelf: "center" }}
+                        />
+
+
+                        <br />
+                        <div style={{ textAlign: "left", paddingLeft: 20 }}>
+                            First Name: {firstName} <br />
+                            Last Name : {lastName} <br />
+                            Username: {userName} <br />
+                            Email: {email} <br />
+                        </div>
 
 
                     </div>
@@ -194,7 +211,7 @@ function AccountPage() {
             </div>
 
 
-        </div>
+        </div >
     );
 }
 

@@ -73,7 +73,7 @@ const LoginPage = () => {
                         Log In
                     </Button>
                     <br />
-                    <NavLink className="navbar-item" activeClassName="is-active" to="/signup">
+                    <NavLink className="navbar-item" activeClassName="is-active" to="/sign_up">
                         Or Create An Account
             </NavLink>
                 </form>
