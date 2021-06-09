@@ -39,6 +39,7 @@ app.post("/cart/add*", (req, res) => {
   db.collection("cart").doc(req.body.name).set({
     name: req.body.name,
     price: req.body.price,
+    image: req.body.image,
   });
 });
 

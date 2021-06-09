@@ -100,6 +100,7 @@ function checkoutItem(i) {
   axios.post("http://localhost:8000/cart/add", {
     name: i.name,
     price: i.price,
+    image: i.image,
   });
 }
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GridList } from "@material-ui/core";
 import { Paper, IconButton } from "@material-ui/core";
 import axios from "axios";
+import ItemImage from "./ItemImage";
 import {
   BrowserRouter as Router,
   Link,
@@ -57,11 +58,12 @@ function DisplayItems(props) {
           display: "inline-block",
           margin: "3%",
           padding: "2%",
-          backgroundColor: "#fff5cc",
+          backgroundColor: "#C4D5C4",
         }}
         elevation={3}
       >
         <h3 style={{ color: "#1f4060" }}>{i.name}</h3>
+        <ItemImage item={i} />
         <button onClick={() => removeItem(i)}>Remove from cart</button>
       </Paper>
     );
