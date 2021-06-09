@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import React, { Fragment , useState} from "react";
-import {Box, TextField} from '@material-ui/core';
+import React, {  useState} from "react";
+import {TextField} from '@material-ui/core';
 import axios from "axios"
 import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
     title: {
         fontFamily: 'Lato',
         fontSize: 25,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color: "#2f2c7a",
     },
     button: {
         backgroundColor: "#c4d5c4",

@@ -1,11 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import React, { Fragment , useState, useContext, useHistory} from "react";
-import { Route, Link, Redirect} from "react-router-dom";
+import React, {  useState} from "react";
+import { Link, } from "react-router-dom";
 import {Box} from '@material-ui/core';
-import Eye from "@material-ui/icons/RemoveRedEye"
-import Heart from "@material-ui/icons/Favorite"
-import Comment from "@material-ui/icons/ChatBubble"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,8 +17,12 @@ const useStyles = makeStyles((theme) => ({
   title: {
     color: "black",
     fontFamily: 'Merriweather',
-    fontSize: 23
+    fontSize: 30
 },
+blurb: {
+    color: "black",
+    fontFamily: 'Montserrat',
+    fontSize: 22},
 descriptext: {
     fontFamily: 'Montserrat',
     fontSize: 20
@@ -44,7 +45,6 @@ thecolor :{
 export default function Header() {
   const classes = useStyles();
   const [blog, setBlog] = useState([]);
-//   const [redirect , setRedirect] = useState(false);
   const Loading = () =>{
     if (blog.length === 0) {
         fetch("http://localhost:8000/blog/get")
@@ -59,9 +59,10 @@ export default function Header() {
 
 
   return (
-<div style={{paddingTop: "7.5%"}}>
+<div style={{paddingTop: "1%"}}>
 <h2 style={{marginLeft: 800}}> {Loading()}</h2>
-{/* <h1 className={classes.title} >THE BLOG</h1> */}
+<h1 className={classes.title} >THE LATEST & GREATEST </h1>
+{/* <div className={classes.blurb}>A blog following the journies of the spontaneous digital nomad and social influencer, Camille.</div> */}
 {blog.map((post)=>(
     <Box display="flex" alignItems="center" justifyContent="center" 
     height={300} width={1200}  m={1} 
