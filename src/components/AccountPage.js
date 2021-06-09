@@ -117,11 +117,15 @@ function AccountPage() {
                 <div className={classes.historyContainer}>
                     <h2>Transaction History</h2>
                     {
-                        transactions.map((t) => {
-                            return (
-                                <TransactionCard name={t.name} date={t.date} price={t.price} />
-                            )
-                        })}
+                        transactions && <div>{
+                            transactions.map((t) => {
+                                return (
+                                    <TransactionCard name={t.name} date={t.date} price={t.price} />
+                                )
+                            })}
+                        </div>
+
+                    }
 
                 </div>
             </div>
