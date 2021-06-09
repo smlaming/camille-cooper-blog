@@ -17,7 +17,7 @@ export default function HomePage() {
                 style={{ width: "12em", backgroundColor: "#2E3B55" }}
                 onClick={() => {
                     firebase.auth().signOut();
-                    window.location.reload();//refresh page
+                    window.location.reload(); // refresh page
                 }}
             >
                 Sign Out
@@ -31,3 +31,4 @@ export default function HomePage() {
         <Button variant="contained" color="secondary" href="/signup">Sign Up</Button>
         </div>)
 }
+
