@@ -78,12 +78,15 @@ function AccountPage() {
                 .then(fireBaseUrl => {
                     setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
                 })
+            console.log("here")
         }
     }, []);
 
     //this useEffect is only needed for inital uploading of photo
     useEffect(() => {
-        handleFireBaseUpload()
+        if (user && imageAsFile) {
+            handleFireBaseUpload()
+        }
     }, [imageAsFile]);
 
     const handleDelete = async () => {
