@@ -1,13 +1,12 @@
 import Header from "./header/Header"
 import TransactionCard from "./TransactionCard"
 import { UserContext } from "../contexts/UserContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, TextField, Grid, Card } from "@material-ui/core";
 import firebase from "../firebase/firebase";
 import { useHistory } from "react-router-dom";
 import axios from "axios"
-import { getStorage, ref } from "firebase/storage";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
         padding: 50,
         display: "flex",
         flexDirection: "column"
+    },
+    img: {
+        width: "30%",
+        height: "auto",
     }
 
 }));
@@ -63,6 +66,14 @@ function AccountPage() {
     const [imageAsFile, setImageAsFile] = useState()
     const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
+    useEffect(() => {
+        if (user) {
+            storage.ref('images').child(user.uid).getDownloadURL()
+                .then(fireBaseUrl => {
+                    setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
+                })
+        }
+    }, []);
 
     const handleDelete = async () => {
         if (!window.confirm("Delete Your Account?")) return null;
@@ -114,12 +125,14 @@ function AccountPage() {
                 <div className={classes.accountContainer}>
                     <div className={classes.info}>
                         <form onSubmit={handleFireBaseUpload}>
+                            {imageAsUrl && <img className={classes.img} src={imageAsUrl.imgUrl} alt="image tag" />}<br />
                             <input
                                 type="file"
                                 onChange={handleImageAsFile}
                             />
                             <button>upload to firebase</button>
                         </form>
+                        <br />
                         First Name: {firstName} <br />
                         Last Name : {lastName} <br />
                         Username: {userName} <br />
