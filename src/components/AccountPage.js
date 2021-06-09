@@ -87,15 +87,6 @@ function AccountPage() {
                         Username: {userName} <br />
                          Email: {email} <br />
 
-                        {shippingAddress != null ? (`Shipping Address: ${shippingAddress}`) :
-                            <TextField
-                                type="text"
-                                value={shippingAddress}
-
-                                placeholder="Shipping Address"
-                                style={{ width: "15em" }}
-                            />
-                        } <br />
 
 
                     </div>

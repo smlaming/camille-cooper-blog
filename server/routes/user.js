@@ -2,6 +2,7 @@ const express = require('express');
 var app = express.Router();
 const db = require('../firebase');
 const admin = require('firebase-admin');
+const { ContactSupportOutlined } = require('@material-ui/icons');
 
 app.get("/login", async (req, res) => {
     const uid = req.query.uid;
@@ -38,7 +39,6 @@ app.post("/signup", async (req, res) => {
     const userName = req.body.userName
     const transactions = []
     const isAdmin = false
-
 
     try {
         await db.collection("user").doc(uid).set({ email, firstName, lastName, userName, uid, transactions, isAdmin })
