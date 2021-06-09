@@ -14,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
         minWidth: "100%",
         display: "flex",
         flexDirection: "column",
+        color: "#29335C"
+
 
     },
     body: {
@@ -29,7 +31,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 20,
         textAlign: "left",
         boxShadow: "1px 3px 1px #9E9E9E",
-        backgroundColor: "lightgray"
+        backgroundColor: "lightgray",
+
+
 
     },
     historyContainer: {
@@ -48,7 +52,8 @@ const useStyles = makeStyles((theme) => ({
     info: {
         padding: 50,
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+
     },
     img: {
         width: "30%",
@@ -166,15 +171,16 @@ function AccountPage() {
                     </div>
                 </div>
                 <div className={classes.historyContainer}>
-                    <h2>Transaction History</h2>
+                    <h2>Purchase History</h2>
                     {
-                        transactions && <div>{
+                        transactions ? <div>{
                             transactions.map((t) => {
                                 return (
                                     <TransactionCard name={t.name} date={t.date} price={t.price} />
                                 )
                             })}
                         </div>
+                            : <div>  You have no purchases! </div>
 
                     }
 
