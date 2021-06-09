@@ -57,7 +57,6 @@ app.post('/addtransaction', (req, res) => {
         transactions: admin.firestore.FieldValue.arrayUnion(req.body.transaction)
     });
     res.send('added a new transcation')
-    console.log(unionRes)
 })
 app.delete('/delete', (req, res) => {
     console.log("deleting")

@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, TextField, Grid, Card } from "@material-ui/core";
 import firebase from "../firebase/firebase";
 import { useHistory } from "react-router-dom";
+import blank from "./images/blank.png";
 import axios from "axios"
 
 const useStyles = makeStyles((theme) => ({
@@ -24,14 +25,14 @@ const useStyles = makeStyles((theme) => ({
     },
     accountContainer: {
         display: "flex",
-        flex: 1,
+        flex: .8,
         flexDirection: "column",
         margin: 10,
-        padding: 10,
         fontSize: 20,
-        textAlign: "left",
+        textAlign: "center",
         boxShadow: "1px 3px 1px #9E9E9E",
-        backgroundColor: "lightgray",
+        backgroundColor: "#C4D5C4",
+        marginLeft: 30
 
 
 
@@ -42,22 +43,29 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         backgroundColor: "lightgray",
         boxShadow: "1px 3px 1px #9E9E9E",
-        backgroundColor: "lightgray"
+        backgroundColor: "#C4D5C4",
+        fontSize: 20,
+        margin: 10,
+        marginRight: 30
+
     },
     action: {
         display: "flex",
         flexDirection: "row",
-        flex: 1
+        flex: 1,
+        marginBottom: 10
     },
     info: {
         padding: 50,
         display: "flex",
         flexDirection: "column",
 
+
     },
     img: {
         width: "30%",
         height: "auto",
+        alignSelf: "center"
     }
 
 }));
@@ -138,21 +146,25 @@ function AccountPage() {
 
             <div className={classes.body}>
                 <div className={classes.accountContainer}>
+                    <h2 style={{ textAlign: "center" }}>Account Info</h2>
                     <div className={classes.info}>
 
-                        {imageAsUrl && <img className={classes.img} src={imageAsUrl.imgUrl} alt="image tag" />}<br />
+
+                        {imageAsUrl.imgUrl != "" ? <img className={classes.img} src={imageAsUrl.imgUrl} alt="image tag" /> : <img className={classes.img} src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"} alt="image tag" />}<br />
                         <input
                             type="file"
                             onChange={handleImageAsFile}
+                            style={{ alignSelf: "center" }}
                         />
 
 
                         <br />
-                        First Name: {firstName} <br />
-                        Last Name : {lastName} <br />
-                        Username: {userName} <br />
-                         Email: {email} <br />
-
+                        <div style={{ textAlign: "left", paddingLeft: 20 }}>
+                            First Name: {firstName} <br />
+                            Last Name : {lastName} <br />
+                            Username: {userName} <br />
+                            Email: {email} <br />
+                        </div>
 
 
                     </div>
@@ -198,7 +210,7 @@ function AccountPage() {
             </div>
 
 
-        </div>
+        </div >
     );
 }
 
