@@ -7,6 +7,7 @@ import { Button, TextField, Grid, Card } from "@material-ui/core";
 import firebase from "../firebase/firebase";
 import { useHistory } from "react-router-dom";
 import axios from "axios"
+import { getStorage, ref } from "firebase/storage";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,12 +54,14 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 function AccountPage() {
-
+    const storage = firebase.storage()
     document.body.style = 'background:"white";';
-
+    const allInputs = { imgUrl: '' }
     const history = useHistory();
     const { firstName, lastName, userName, isLoggedIn, user, shippingAddress, email, transactions } = useContext(UserContext);
     const classes = useStyles();
+    const [imageAsFile, setImageAsFile] = useState()
+    const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
 
     const handleDelete = async () => {
@@ -68,6 +71,35 @@ function AccountPage() {
         window.location.reload();
         history.push("/")
     }
+    const handleImageAsFile = (e) => {
+        const image = e.target.files[0]
+        setImageAsFile(imageFile => (image))
+    }
+    const handleFireBaseUpload = e => {
+        e.preventDefault()
+        console.log('start of upload')
+        if (imageAsFile === '') {
+            console.error(`not an image, the image file is a ${typeof (imageAsFile)}`)
+        }
+        const uploadTask = storage.ref(`/images/${user.uid}`).put(imageAsFile)
+        //initiates the firebase side uploading 
+        uploadTask.on('state_changed',
+            (snapShot) => {
+                //takes a snap shot of the process as it is happening
+                console.log(snapShot)
+            }, (err) => {
+                //catches the errors
+                console.log(err)
+            }, () => {
+                // gets the functions from storage refences the image storage in firebase by the children
+                // gets the download url then sets the image from firebase as the value for the imgUrl key:
+                storage.ref('images').child(user.uid).getDownloadURL()
+                    .then(fireBaseUrl => {
+                        setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
+                    })
+            })
+    }
+
 
     if (!isLoggedIn || !user) history.push("/login");
     return (
@@ -82,6 +114,13 @@ function AccountPage() {
             <div className={classes.body}>
                 <div className={classes.accountContainer}>
                     <div className={classes.info}>
+                        <form onSubmit={handleFireBaseUpload}>
+                            <input
+                                type="file"
+                                onChange={handleImageAsFile}
+                            />
+                            <button>upload to firebase</button>
+                        </form>
                         First Name: {firstName} <br />
                         Last Name : {lastName} <br />
                         Username: {userName} <br />
