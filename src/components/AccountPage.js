@@ -151,7 +151,7 @@ function AccountPage() {
                     <div className={classes.info}>
 
 
-                        {imageAsUrl.imgUrl != "" ? <img className={classes.img} src={imageAsUrl.imgUrl} alt="image tag" /> : <img className={classes.img} src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"} alt="image tag" />}<br />
+                        {imageAsUrl.imgUrl != "" ? <img className={classes.img} src={imageAsUrl.imgUrl} alt="image tag" /> : <img className={classes.img} src={"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png"} alt="image tag" />}<br />
                         <input
                             type="file"
                             onChange={handleImageAsFile}

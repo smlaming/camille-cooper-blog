@@ -39,7 +39,7 @@ const Forum = () => {
                     console.log("line 39");
                     axios.post("http://localhost:8000/add_post", {
                         content: text,
-                        date: curDate.toString().substr(0,10) + " at" + curDate.toString().substr(15,9),
+                        date: curDate.toLocaleDateString() + " @ " + curDate.toLocaleTimeString(('en-US'), { hour: '2-digit', minute: '2-digit' }),
                         name: firstName === undefined ? "" : "by " + firstName,
                         profileImage: profURL
                     })
