@@ -8,6 +8,7 @@ const UserContextProvider = ({ children }) => {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [userName, setUserName] = useState();
+    const [photo, setPhoto] = useState();
     const [id, setID] = useState();
     const [userReload, forceUserReload] = useState("false");
     useEffect(() => {
@@ -23,6 +24,8 @@ const UserContextProvider = ({ children }) => {
                     setID(res.uid);
                     setUserName(res.userName)
                     forceUserReload(false);
+                    setPhoto(res.photo)
+                    console.log(res.photo)
                 });
         }
     }, [user, userReload]);
@@ -40,6 +43,7 @@ const UserContextProvider = ({ children }) => {
                 userName,
                 forceUserReload,
                 setUser,
+                photo
             }}
         >
             {children}

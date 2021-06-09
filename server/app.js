@@ -9,6 +9,7 @@ var router = express.Router();
 
 
 const UserController = require("./routes/user.js")
+const BlogPosts = require("./routes/blog.js")
 
 const getAll = async (collection) => {
     const snapshot = await db.collection(collection).get();
@@ -30,6 +31,7 @@ const get = async (collection, id) => {
 }
 
 app.use('/user', UserController);
+app.use('/blog', BlogPosts);
 
 
 app.get('/', (req, res) => {
