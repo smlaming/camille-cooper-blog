@@ -85,6 +85,7 @@ function AccountPage() {
             storage.ref('images').child(user.uid).getDownloadURL()
                 .then(fireBaseUrl => {
                     setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
+                    //console.log(fireBaseUrl);
                 })
             console.log("here")
         }

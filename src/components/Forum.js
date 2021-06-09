@@ -3,13 +3,16 @@ import DiscussionBoard from 'react-discussion-board';
 import axios from 'axios';
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
+import firebase from "../firebase/firebase";
 import 'react-discussion-board/dist/index.css';
 
 const Forum = () => {
 
-    const { firstName, lastName } = useContext(UserContext);
-
+    const { user, firstName } = useContext(UserContext);
     const [myPosts, setMyPosts] = useState([]);
+
+    const storage = firebase.storage();
+
     useEffect(() => {
         console.log(firstName);
         axios.get("http://localhost:8000/all_posts").then(function(data) {
@@ -22,22 +25,35 @@ const Forum = () => {
     }, []);
 
     const submitPost = (text) => {
+
         const curDate = new Date();
-        axios.post("http://localhost:8000/add_post", {
-            content: text,
-            date: curDate.toString().substr(0,10) + " at" + curDate.toString().substr(15,9),
-            name: "",
-            profileImage: "https://www.pngkit.com/png/full/796-7963534_individuals-person-icon-circle-png.png"
-        })
-        .catch(err => {
-            console.log(err);
-        });
+        var profURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png";
+        console.log(user);
+        if (user) {
+            storage.ref('images').child(user.uid).getDownloadURL()
+                .then(fireBaseUrl => {
+                    console.log(fireBaseUrl);
+                    profURL = fireBaseUrl;
+                })
+                .then(() => {
+                    console.log("line 39");
+                    axios.post("http://localhost:8000/add_post", {
+                        content: text,
+                        date: curDate.toString().substr(0,10) + " at" + curDate.toString().substr(15,9),
+                        name: firstName === undefined ? "" : "by " + firstName,
+                        profileImage: profURL
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+                })
+        }
+
     }
 
     return (
         <div>
-            <h1 style={{marginBottom:10}}>Forum</h1>
-            <DiscussionBoard posts={myPosts} onSubmit={submitPost} />
+            <DiscussionBoard posts={myPosts} onSubmit={submitPost} firstName={firstName === undefined ? "" : "by " + firstName} />
         </div>
     )
 }
