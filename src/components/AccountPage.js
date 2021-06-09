@@ -71,6 +71,7 @@ function AccountPage() {
     const [imageAsFile, setImageAsFile] = useState()
     const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
+    // this useEffect along with the storage and image as url states above can be used on other pages to retrieve images from storage
     useEffect(() => {
         if (user) {
             storage.ref('images').child(user.uid).getDownloadURL()
@@ -80,6 +81,11 @@ function AccountPage() {
         }
     }, []);
 
+    //this useEffect is only need for inital uploading of photo
+    useEffect(() => {
+        handleFireBaseUpload()
+    }, [imageAsFile]);
+
     const handleDelete = async () => {
         if (!window.confirm("Delete Your Account?")) return null;
         await user.delete()
@@ -88,11 +94,13 @@ function AccountPage() {
         history.push("/")
     }
     const handleImageAsFile = (e) => {
+        e.preventDefault()
         const image = e.target.files[0]
         setImageAsFile(imageFile => (image))
+
+
     }
     const handleFireBaseUpload = e => {
-        e.preventDefault()
         console.log('start of upload')
         if (imageAsFile === '') {
             console.error(`not an image, the image file is a ${typeof (imageAsFile)}`)
@@ -129,14 +137,14 @@ function AccountPage() {
             <div className={classes.body}>
                 <div className={classes.accountContainer}>
                     <div className={classes.info}>
-                        <form onSubmit={handleFireBaseUpload}>
-                            {imageAsUrl && <img className={classes.img} src={imageAsUrl.imgUrl} alt="image tag" />}<br />
-                            <input
-                                type="file"
-                                onChange={handleImageAsFile}
-                            />
-                            <button>upload to firebase</button>
-                        </form>
+
+                        {imageAsUrl && <img className={classes.img} src={imageAsUrl.imgUrl} alt="image tag" />}<br />
+                        <input
+                            type="file"
+                            onChange={handleImageAsFile}
+                        />
+
+
                         <br />
                         First Name: {firstName} <br />
                         Last Name : {lastName} <br />
