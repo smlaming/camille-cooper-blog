@@ -86,12 +86,17 @@ app.post("/users", async (req, res) => {
         content: req.body.content,
         date: req.body.date,
         name: req.body.name,
-        profileImage: req.body.profileImage
+        profileImage: req.body.profileImage,
     };
     
     db.collection("forum")
       .add(post)
-      .then((docRef) => res.json({ ...post, id: docRef.id }));
+      .then((docRef) => {
+          id = docRef.id;
+          res.json({ ...post, id: docRef.id })
+          console.log(id)
+          db.collection("forum").doc(id).update({myID : id});
+      });
   });
 
     app.get("/all_posts", (req, res) => {
