@@ -22,7 +22,7 @@ app.get("/login", async (req, res) => {
                     transactions: user.data().transactions,
                     admin: user.data().isAdmin,
                     photo: user.data().photo,
-                    transactions: user.data().purchases
+                    transactions: user.data().transactions
 
                 })
                 .end();

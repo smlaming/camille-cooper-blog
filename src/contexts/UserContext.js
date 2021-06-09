@@ -25,6 +25,7 @@ const UserContextProvider = ({ children }) => {
                     setID(res.uid);
                     setUserName(res.userName)
                     setTransactions(res.transactions)
+                    console.log("trans", res.transactions)
                     forceUserReload(false);
                     setPhoto(res.photo)
                     setIsAdmin(res.admin)
