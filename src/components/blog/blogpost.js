@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 23
   },
   descriptext: {
-      fontFamily: 'Lato',
+      fontFamily: 'Inter',
       fontSize: 25,
       lineHeight: 2.5,
   },

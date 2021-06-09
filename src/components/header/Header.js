@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 17,
     marginTop: 11,
     // fontFamily: 'Lobster Two',
-    fontFamily: "Inter",
+    fontFamily: "Playfair Display",
     fontSize: 48,
     fontWeight: "bold"
   },
@@ -50,7 +50,7 @@ export default function Header() {
 
   return (
     <React.Fragment>
-        <div style={{position:"fixed", width:"100%", top:0}}>
+        <div style={{position:"fixed", width:"100%", top:0, zIndex: 1}}>
       <Toolbar className={classes.toolbar}>
       <IconButton 
         className={classes.toolbar}
