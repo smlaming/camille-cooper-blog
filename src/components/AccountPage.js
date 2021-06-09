@@ -76,6 +76,7 @@ function AccountPage() {
             storage.ref('images').child(user.uid).getDownloadURL()
                 .then(fireBaseUrl => {
                     setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
+                    //console.log(fireBaseUrl);
                 })
         }
     }, []);
@@ -130,12 +131,12 @@ function AccountPage() {
                 <div className={classes.accountContainer}>
                     <div className={classes.info}>
                         <form onSubmit={handleFireBaseUpload}>
-                            {imageAsUrl && <img className={classes.img} src={imageAsUrl.imgUrl} alt="image tag" />}<br />
+                            {imageAsUrl && <img className={classes.img} src={imageAsUrl.imgUrl} alt="img" />}<br />
                             <input
                                 type="file"
                                 onChange={handleImageAsFile}
                             />
-                            <button>upload to firebase</button>
+                            <Button>Upload</Button>
                         </form>
                         <br />
                         First Name: {firstName} <br />
