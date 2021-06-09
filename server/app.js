@@ -7,7 +7,6 @@ const cors = require('cors')
 app.use(cors({ origin: true }));
 var router = express.Router();
 
-
 const UserController = require("./routes/user.js")
 const BlogPosts = require("./routes/blog.js")
 
