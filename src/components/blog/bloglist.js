@@ -1,11 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import React, { Fragment , useState, useContext, useHistory} from "react";
-import { Route, Link, Redirect} from "react-router-dom";
+import React, { useState } from "react";
+import {Link } from "react-router-dom";
 import {Box} from '@material-ui/core';
-import Eye from "@material-ui/icons/RemoveRedEye"
-import Heart from "@material-ui/icons/Favorite"
-import Comment from "@material-ui/icons/ChatBubble"
+//import Eye from "@material-ui/icons/RemoveRedEye"
+//import Heart from "@material-ui/icons/Favorite"
+//import Comment from "@material-ui/icons/ChatBubble"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -66,7 +66,7 @@ export default function Header() {
     <Box display="flex" alignItems="center" justifyContent="center" 
     height={300} width={1200}  m={1} 
     style={{marginLeft:450, borderBottom: "solid", borderColor: "#c4d5c4", borderBottomWidth: "thin"}}>
-        <img style={{marginLeft:30, marginBottom:10, width:190, marginRight:35}} src={post.photo}></img>
+        <img alt="img" style={{marginLeft:30, marginBottom:10, width:190, marginRight:35}} src={post.photo}></img>
         <div display="block" position="absolute" justifyContent="flex-start" >
         <div className={classes.datetext} style={{ float:"left", marginRight: 800, marginLeft: 8}}>{post.date}</div> 
         {/* <Box display="relative"><div className={classes.thecolor} style={{float: "right"}}><Eye></Eye>239</div>

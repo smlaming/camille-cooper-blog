@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import React, { Fragment , useState} from "react";
-import {Box, TextField} from '@material-ui/core';
+import React, { useState} from "react";
+import { TextField} from '@material-ui/core';
 import axios from "axios"
 import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
@@ -107,7 +107,7 @@ const AddComment = ()=> {
 <pre className={classes.descriptext} 
         style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px",
         borderBottom: "solid", borderBottomColor: "#c4d5c4", borderBottomWidth: "thin",
-         content:"\a", whiteSpace:"pre-line"}}>
+         content:"", whiteSpace:"pre-line"}}>
             <div className={classes.thecolor} style={{marginBottom:20}}>
             <Eye style={{ marginRight:3}}></Eye> 2130
             <Heart style={{marginLeft:50, marginRight:3}}></Heart> 314
@@ -116,14 +116,14 @@ const AddComment = ()=> {
         }} className={classes.darkblue}>Comments</div>
 {isLoggedIn ? <div> 
     <div  style={{float: "left", marginLeft: "400px", borderRadius: "50%", overflow:"hidden",marginTop:25, marginRight:20}}>
-            <img style={{width: 80}} src={photoExist(photo)}></img></div>
+            <img style={{width: 80}} src={photoExist(photo)} alt="img"></img></div>
 <div className={classes.title}  style={{textAlign: "justify", marginRight: "400px", marginLeft: "500px"}}>{firstName}</div>
 <div style={{display:"flex",textAlign: "justify", marginLeft: "400px", marginBottom:40}}>
     <TextField multiline rows={2} variant="outlined" onChange={handleChange} value={newComment}
 style={{width:1050, fontSize: 30, marginBottom:20, marginTop:10}} placeholder="Write a comment.."></TextField>
 <Button onClick={AddComment} className={classes.button}>Post</Button></div></div> :
 <div>
-<img style={{float: "left", marginLeft: "400px",  paddingRight: 25, width:80}} 
+<img alt="img" style={{float: "left", marginLeft: "400px",  paddingRight: 25, width:80}} 
 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png"></img>
 <div style={{display:"flex",textAlign: "justify", marginLeft: "400px", marginBottom:40}}>
     <TextField multiline rows={3} disabled
@@ -133,7 +133,7 @@ style={{width:1050, fontSize: 30, marginBottom:20}} label="Please sign in to lea
 {post.map((each)=>(
     <div>
         <div  style={{float: "left", marginLeft: "400px", borderRadius: "50%", overflow:"hidden"}}>
-            <img style={{width: 80}} src={each.photo}></img></div>
+            <img alt="img" style={{width: 80}} src={each.photo}></img></div>
         <div className={classes.title}  style={{textAlign: "justify", marginRight: "400px", marginLeft: "500px"}}>{each.name}</div>
         <pre className={classes.descriptext} 
         style={{textAlign: "justify", marginRight: "400px", marginLeft: "500px"}}>

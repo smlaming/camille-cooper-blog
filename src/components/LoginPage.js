@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import firebase from "../firebase/firebase";
 import { TextField, Button } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
-import { TextField, Button, Paper } from "@material-ui/core";
 import { useHistory, NavLink } from "react-router-dom";
-import axios from "axios";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 
@@ -12,10 +9,9 @@ const LoginPage = () => {
     document.body.style = 'background:"white";';
 
     const history = useHistory();
-    const { setUser, forceUserReload } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userName, setUserName] = useState("");
 
     const logIn = (e) => {
         e.preventDefault();
@@ -25,15 +21,8 @@ const LoginPage = () => {
             .signInWithEmailAndPassword(email, password)
             .then((user) => {
                 setUser(user.user);
-<<<<<<< HEAD
-                history.push("/");
-                console.log("logged in as", user.user.email);
-                setUserName(user.user.displayName);
-                console.log("name: " + user.user.displayName);
-=======
                 history.push("/account");
                 console.log("logged in as", user.user.email)
->>>>>>> 494f6412ce1e67c3794f851fe2b5fd5a816b090f
             })
             .catch((error) => {
                 alert("Incorrect username or password");

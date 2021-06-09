@@ -1,10 +1,9 @@
 import './App.css';
 import LoginPage from './components/LoginPage'
 import { Route, Switch } from "react-router-dom";
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment } from "react";
 import Header from "./components/header/Header"
 import SignUpPage from "./components/SignUpPage"
-import HomePage from "./components/HomePage"
 import Forum from "./components/Forum";
 // import Account from "./components/HomePage"
 import Blog from "./components/blog/bloglist"

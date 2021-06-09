@@ -1,8 +1,8 @@
 import Header from "./header/Header"
 
 import { UserContext } from "../contexts/UserContext";
-import { useContext, useState } from "react";
-import { Button, TextField } from "@material-ui/core";
+import { useContext } from "react";
+import { Button } from "@material-ui/core";
 import firebase from "../firebase/firebase";
 import { useHistory } from "react-router-dom";
 import axios from "axios"
@@ -12,7 +12,7 @@ function AccountPage() {
     document.body.style = 'background:"white";';
 
     const history = useHistory();
-    const { firstName, lastName, isLoggedIn, role, id, user, forceUserReload } = useContext(UserContext);
+    const { firstName, lastName, isLoggedIn, user } = useContext(UserContext);
 
 
 

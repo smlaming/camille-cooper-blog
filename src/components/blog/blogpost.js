@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 // import Typography from '@material-ui/core/Typography';
-import React, { Fragment , useState} from "react";
-import { BrowserRouter as Router, Route, Link, Switch, useParams } from "react-router-dom";
+import React, { useState} from "react";
+import { BrowserRouter as Link } from "react-router-dom";
 import axios from "axios"
 import Comments from "./comments"
 
@@ -83,21 +83,21 @@ export default function BlogPost(props) {
 </div> */}
 <div className={classes.datetext} >{post.data.date}</div>
 <div className={classes.darkblue}>{post.data.title}</div>
-        <img style={{float: "left", marginLeft: "400px", marginTop:"50px", paddingRight: 70}} src={post.data.photo}></img>
+        <img alt="img" style={{float: "left", marginLeft: "400px", marginTop:"50px", paddingRight: 70}} src={post.data.photo}></img>
         <div  justifyContent="flex-start" >
         <pre className={classes.descriptext} 
-        style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginTop:"50px", content:"\a", whiteSpace:"pre-line"}}>
+        style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginTop:"50px", content:"", whiteSpace:"pre-line"}}>
             {post.data.fulltext}</pre>    
         <div className={classes.quote} 
         style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginTop:"50px",border: "solid", borderColor: "#c4d5c4"}}
         ><div style={{marginLeft:20, marginRight:20}}>"{post.data.quote}"</div></div>  
         <pre className={classes.descriptext} 
-        style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginTop:"50px", content:"\a", whiteSpace:"pre-line"}}>
+        style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginTop:"50px", content:"", whiteSpace:"pre-line"}}>
             {post.data.fulltext2}</pre>    
         <pre className={classes.descriptext} 
         style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px",
         borderBottom: "solid", borderBottomColor: "#c4d5c4", borderBottomWidth: "thin",
-        marginTop:"50px", content:"\a", whiteSpace:"pre-line"}}>
+        marginTop:"50px", content:"", whiteSpace:"pre-line"}}>
             <div style={{marginBottom:20}}>{post.data.fulltext3}</div></pre>    
         </div>
         <Comments theID={props.location.state.postID}></Comments>

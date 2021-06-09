@@ -7,14 +7,20 @@ import 'react-discussion-board/dist/index.css';
 
 const Forum = () => {
 
-    const { firstName, lastName } = useContext(UserContext);
+    const { firstName, photo } = useContext(UserContext);
+
+    const photoExist = (pic) =>{
+        if (photo !== undefined ){
+            return photo
+        } else {
+            return "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png"
+        }
+    }
 
     const [myPosts, setMyPosts] = useState([]);
     useEffect(() => {
-        console.log(firstName);
         axios.get("http://localhost:8000/all_posts").then(function(data) {
             setMyPosts(data.data);
-            console.log(data.data);
         })
         .catch(err => {
             console.log(err);
@@ -26,8 +32,8 @@ const Forum = () => {
         axios.post("http://localhost:8000/add_post", {
             content: text,
             date: curDate.toString().substr(0,10) + " at" + curDate.toString().substr(15,9),
-            name: "",
-            profileImage: "https://www.pngkit.com/png/full/796-7963534_individuals-person-icon-circle-png.png"
+            name: firstName === undefined ? "" : "by " + firstName,
+            profileImage: photoExist(photo)
         })
         .catch(err => {
             console.log(err);
@@ -36,8 +42,7 @@ const Forum = () => {
 
     return (
         <div>
-            <h1 style={{marginBottom:10}}>Forum</h1>
-            <DiscussionBoard posts={myPosts} onSubmit={submitPost} />
+            <DiscussionBoard posts={myPosts} onSubmit={submitPost} firstName={firstName === undefined ? "" : "by " + firstName} />
         </div>
     )
 }
