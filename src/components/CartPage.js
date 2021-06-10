@@ -38,7 +38,9 @@ function DisplayCart() {
   return (
     <div>
       <h1>Your Cart</h1>
-      <Link to="/">Back to Shopping</Link>
+      <Link to="/">
+        <Button>Back To Shopping</Button>
+      </Link>
       <GridList style={{ justifyContent: "center" }}>
         {cartData && <DisplayItems data={cartData} />}
       </GridList>
