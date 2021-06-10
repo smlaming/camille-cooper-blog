@@ -196,7 +196,7 @@ function AccountPage() {
                 <div className={classes.historyContainer}>
                     <h2>Purchase History</h2>
                     {
-                        transactions ? <div>{
+                        transactions.length!=0 ? <div>{
                             transactions.map((t) => {
                                 return (
                                     <TransactionCard name={t.name} date={t.date} price={t.price} />

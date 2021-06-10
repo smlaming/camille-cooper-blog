@@ -30,7 +30,7 @@ function App() {
           <Route path="/Forum" component={Forum} />
           <Route path="/myCart" component={Cart} />
           <Route path="/login" component={LoginPage} />
-          <Route path="/signup" component={SignUpPage} />
+          <Route path="/sign_up" component={SignUpPage} />
           <Route path="/forum" component={Forum} />
         </Switch>
       </div>
