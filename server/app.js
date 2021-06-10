@@ -1,3 +1,4 @@
+
 const express = require('express')
 const db = require('./firebase');
 const app = express()
@@ -11,14 +12,36 @@ const UserController = require("./routes/user.js")
 const BlogPosts = require("./routes/blog.js")
 
 const getAll = async (collection) => {
-    const snapshot = await db.collection(collection).get();
-    const all = []
-    snapshot.forEach(doc => {
-        const each = { ...doc.data(), id: doc.id };
-        all.push(each);
-    });
-    return all;
-}
+  const snapshot = await db.collection(collection).get();
+  const all = [];
+  snapshot.forEach((doc) => {
+    const each = { ...doc.data(), id: doc.id };
+    all.push(each);
+  });
+  return all;
+};
+
+ 
+app.post("/cart/add*", (req, res) => {
+  console.log("Attempted add");
+  db.collection("cart").doc(req.body.name).set({
+    name: req.body.name,
+    price: req.body.price,
+    image: req.body.image,
+  });
+});
+
+app.get("/cart/items", (req, res) => {
+  console.log("Cart items requested");
+  getAll("cart").then((resp) => res.json(resp));
+});
+
+app.delete("/cart/remove*", (req, res) => {
+  console.log("Attemped delete", req.body.item);
+  db.collection("cart").doc(req.body.item).delete();
+});
+
+
 const get = async (collection, id) => {
     const ref = db.collection(collection).doc(id);
     const doc = await ref.get();
@@ -114,4 +137,5 @@ app.post("/users", async (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
+
 

@@ -1,5 +1,9 @@
-import './App.css';
-import LoginPage from './components/LoginPage'
+
+import logo from "./logo.svg";
+import "./App.css";
+import LoginPage from "./components/LoginPage";
+import Store from "./components/StorePage";
+import Cart from "./components/CartPage";
 import { Route, Switch } from "react-router-dom";
 import React, { Fragment} from "react";
 import Header from "./components/header/Header"
@@ -18,14 +22,15 @@ function App() {
       <Header></Header>
       <div style={{paddingBottom: 200}}>
       <Switch>
+
         <Route path="/" component={Home} exact />
         <Route path="/About" />
         <Route path="/Account" component={Account} />
-        <Route path="/Store" />
+        <Route path="/Store" component={Store} />
         <Route path="/Blog" component={Blog}/>
         <Route path="/BlogPost" component={BlogPost}/>
         <Route path="/Forum" component={Forum}/>
-        <Route path="/ShoppingCart" />
+        <Route path="/ShoppingCart" component={Cart}/>
         <Route path='/login' component={LoginPage} />
         <Route path='/signup' component={SignUpPage} />
         <Route path='/forum' component={Forum} />
