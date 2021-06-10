@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import React, {  useState} from "react";
+import React, {  useState, useEffect} from "react";
 import {TextField} from '@material-ui/core';
 import axios from "axios"
 import { UserContext } from "../../contexts/UserContext";
@@ -8,11 +8,11 @@ import { useContext } from "react";
 import Eye from "@material-ui/icons/RemoveRedEye"
 import Heart from "@material-ui/icons/Favorite"
 import Comment from "@material-ui/icons/Comment"
-
+import firebase from "../../firebase/firebase";
 const useStyles = makeStyles((theme) => ({
     descriptext: {
-        fontFamily: 'Lato',
-        fontSize: 25,
+        fontFamily: 'Inter',
+        fontSize: 22,
     },
     title: {
         fontFamily: 'Lato',
@@ -52,9 +52,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Comments({theID}) {
   const classes = useStyles();
   const [post, setPost] = useState([]);
-  const { firstName, isLoggedIn, photo } = useContext(UserContext);
+  const { firstName, isLoggedIn, photo , user} = useContext(UserContext);
   const [newComment, setNewComment] = useState("")
-
+  const allInputs = { imgUrl: '' }
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs)
+  const storage = firebase.storage()
   const Loading = () =>{
     if (post.length === 0) {
         axios.get("http://localhost:8000/blog/get/comments", {params : {id:theID}})
@@ -66,13 +68,24 @@ export default function Comments({theID}) {
   }
 }
 
+useEffect(() => {
+    if (user) {
+        storage.ref('images').child(user.uid).getDownloadURL()
+            .then(fireBaseUrl => {
+                setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
+                //console.log(fireBaseUrl);
+            })
+        console.log("here")
+    }
+}, []);
+
 const handleChange = (e) => {
     setNewComment(e.target.value);
   };
 
 const photoExist = (pic) =>{
-    if (photo !== undefined ){
-        return photo
+    if (imageAsUrl.imgUrl !== ""){
+        return imageAsUrl.imgUrl
     } else {
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png"
     }
@@ -116,8 +129,7 @@ const AddComment = ()=> {
 <h2 style={{marginLeft: 800}}> {Loading()}</h2>
 <pre className={classes.descriptext} 
         style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px",
-        borderBottom: "solid", borderBottomColor: "#c4d5c4", borderBottomWidth: "thin",
-         content:"\a", whiteSpace:"pre-line"}}>
+        borderBottom: "solid", borderBottomColor: "#c4d5c4", borderBottomWidth: "thin", whiteSpace:"pre-line"}}>
             <div className={classes.thecolor} style={{marginBottom:20}}>
             <Eye style={{ marginRight:3}}></Eye> 2130
             <Heart style={{marginLeft:50, marginRight:3}}></Heart> 314
@@ -126,7 +138,9 @@ const AddComment = ()=> {
         }} className={classes.darkblue}>Comments  ({post.length})</div>
 {isLoggedIn ? <div> 
     <div  style={{float: "left", marginLeft: "400px", borderRadius: "50%", overflow:"hidden",marginTop:25, marginRight:20}}>
-            <img style={{width: 80}} src={photoExist(photo)}></img></div>
+            {/* <img style={{width: 80}} src={photoExist(photo)}></img> */}
+            {imageAsUrl.imgUrl !== "" ? <img  style={{width: 80}} src={imageAsUrl.imgUrl} alt="image tag" /> : 
+            <img className={classes.img} src={"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png"} alt="image tag" />}</div>
 <div className={classes.title}  style={{textAlign: "justify", marginRight: "400px", marginLeft: "500px"}}>{firstName}</div>
 <div style={{display:"flex",textAlign: "justify", marginLeft: "400px", marginBottom:40}}>
     <TextField multiline rows={2} variant="outlined" onChange={handleChange} value={newComment}

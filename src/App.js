@@ -10,12 +10,13 @@ import Forum from "./components/Forum";
 import Blog from "./components/blog/bloglist"
 import BlogPost from "./components/blog/blogpost"
 import Account from "./components/AccountPage"
-
+import Footer from "./components/header/Footer"
 
 function App() {
   return (
-    <div className="App" style={{ position: "relative" }}>
+    <div className="App" style={{ position: "relative", minHeight: "100vh" }}>
       <Header></Header>
+      <div style={{paddingBottom: 200}}>
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/About" />
@@ -29,6 +30,8 @@ function App() {
         <Route path='/signup' component={SignUpPage} />
         <Route path='/forum' component={Forum} />
       </Switch>
+      </div>
+      <Footer></Footer>
     </div>
   );
 }

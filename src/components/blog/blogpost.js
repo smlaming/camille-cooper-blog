@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: 2.5,
   },
   datetext: {
-      fontFamily: 'Montserrat',
-      fontSize: 17,
+      fontFamily: 'Inter',
+      fontSize: 19,
       marginTop: 10
   },
   conttext :{
