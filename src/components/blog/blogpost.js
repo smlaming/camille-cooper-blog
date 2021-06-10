@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import Comments from "./comments"
@@ -53,22 +53,31 @@ export default function BlogPost(props) {
   const classes = useStyles();
   const [post, setPost] = useState(null);
 
-  const Loading = () =>{
-    if (post === null) {
-        console.log(props.location.state.postID )
-        axios.get("http://localhost:8000/blog/get/post", {params : {id: props.location.state.postID }})
+//   const Loading = () =>{
+//     if (post === null) {
+//         console.log(props.location.state.postID )
+//         axios.get("http://localhost:8000/blog/get/post", {params : {id: props.location.state.postID }})
+//         .then((res)=> {
+//           setPost(res);
+//           console.log(res)
+//         }
+//         )
+//   }
+// }
+
+useEffect(() => {
+    axios.get("http://localhost:8000/blog/get/post", {params : {id: props.location.state.postID }})
         .then((res)=> {
           setPost(res);
           console.log(res)
         }
         )
-  }
-}
+}, []);
 
 
   return (
 <div style={{paddingTop: "1%"}}>
-<h2 style={{marginLeft: 800}}> {Loading()}</h2>
+{/* <h2 style={{marginLeft: 800}}> {Loading()}</h2> */}
 <Button button component={Link}
         to="/Blog" style={{ marginRight: "1100px"}}>← all posts</Button> 
 

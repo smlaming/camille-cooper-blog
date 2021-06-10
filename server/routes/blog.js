@@ -32,7 +32,7 @@ app.get("/get", async (req, res) => {
       });
       res.send(comments);
   });
-
+ 
   app.post("/addpost", async (req, res) => {
     const { title, photo, description, date, fulltext, quote } = req.body;
     const resp = await db.collection("blog").add({

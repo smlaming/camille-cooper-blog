@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import React, {  useState} from "react";
+import React, {  useState, useEffect} from "react";
 import { Link, } from "react-router-dom";
 import {Box} from '@material-ui/core';
 import { UserContext } from "../../contexts/UserContext";
@@ -58,23 +58,31 @@ export default function BlogList() {
   const [blog, setBlog] = useState([]);
   const { isAdmin } = useContext(UserContext);
 
-  const Loading = () =>{
-    if (blog.length === 0) {
-        fetch("http://localhost:8000/blog/get")
+//   const Loading = () =>{
+//     if (blog.length === 0) {
+//         fetch("http://localhost:8000/blog/get")
+//         .then((res)=> res.json())
+//         .then((res)=> {
+//           setBlog(res);
+//           console.log(res)
+//         }
+//         )
+//   }
+// }
+useEffect(() => {
+    fetch("http://localhost:8000/blog/get")
         .then((res)=> res.json())
         .then((res)=> {
           setBlog(res);
           console.log(res)
         }
         )
-  }
-}
+}, []);
 
 
   return (
 <div style={{paddingTop: "1%"}}>
-<h2 style={{marginLeft: 800}}> {Loading()}</h2>
-{/* <h1 className={classes.title} >THE LATEST & GREATEST </h1> */}
+{/* <h2 style={{marginLeft: 800}}> {Loading()}</h2> */}
 <h1 className={classes.title} >THE LATEST & GREATEST </h1>
 <div className={classes.blurb}>A blog following the journeys of the spontaneous digital nomad and social influencer, Camille.</div>
 {isAdmin ? <AddPost

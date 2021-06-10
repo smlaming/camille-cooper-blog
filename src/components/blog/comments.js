@@ -9,6 +9,8 @@ import Eye from "@material-ui/icons/RemoveRedEye"
 import Heart from "@material-ui/icons/Favorite"
 import Comment from "@material-ui/icons/Comment"
 import firebase from "../../firebase/firebase";
+import HeartOpen from "@material-ui/icons/FavoriteBorder"
+import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles((theme) => ({
     descriptext: {
         fontFamily: 'Inter',
@@ -57,23 +59,35 @@ export default function Comments({theID}) {
   const allInputs = { imgUrl: '' }
   const [imageAsUrl, setImageAsUrl] = useState(allInputs)
   const storage = firebase.storage()
-  const Loading = () =>{
-    if (post.length === 0) {
-        axios.get("http://localhost:8000/blog/get/comments", {params : {id:theID}})
+  const [like, setLike] = useState(false);
+  const [numLikes, setNumLikes] = useState(Math.floor(Math.random() * 500))
+  const [views, setViews] = useState(Math.floor(Math.random() * 3000))
+//   const Loading = () =>{
+//     if (post.length === 0) {
+//         axios.get("http://localhost:8000/blog/get/comments", {params : {id:theID}})
+//         .then((res)=> {
+//           setPost(res.data);
+//           console.log(res)
+//         }
+//         )
+//   }
+// }
+
+useEffect(() => {
+    axios.get("http://localhost:8000/blog/get/comments", {params : {id:theID}})
         .then((res)=> {
           setPost(res.data);
           console.log(res)
         }
         )
-  }
-}
+}, []);
 
 useEffect(() => {
     if (user) {
         storage.ref('images').child(user.uid).getDownloadURL()
             .then(fireBaseUrl => {
                 setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
-                //console.log(fireBaseUrl);
+                console.log(fireBaseUrl);
             })
         console.log("here")
     }
@@ -123,24 +137,34 @@ const AddComment = ()=> {
   updateData();
 }
 
+const toggleLike = ()=>{
+    setLike(!like)
+}
+
 
   return (
 <div >
-<h2 style={{marginLeft: 800}}> {Loading()}</h2>
+{/* <h2 style={{marginLeft: 800}}> {Loading()}</h2> */}
 <pre className={classes.descriptext} 
         style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px",
         borderBottom: "solid", borderBottomColor: "#c4d5c4", borderBottomWidth: "thin", whiteSpace:"pre-line"}}>
-            <div className={classes.thecolor} style={{marginBottom:20}}>
-            <Eye style={{ marginRight:3}}></Eye> 2130
-            <Heart style={{marginLeft:50, marginRight:3}}></Heart> 314
-            <Comment style={{marginLeft:50,marginRight:4}}></Comment>{post.length}</div></pre>    
+            <div className={classes.thecolor} style={{marginBottom:20, display:"flex", alignItems:"center", flexWrap:"wrap"}}>
+            <Eye style={{ marginRight:10}}></Eye> {views}
+            <Comment style={{marginLeft:60,marginRight:10}}></Comment>{post.length}
+            {like ? 
+            <span   style={{marginLeft:50, marginRight:3}}><IconButton className={classes.thecolor}  onClick={toggleLike}
+            ><Heart ></Heart></IconButton> {numLikes} </span>
+            : 
+            <span style={{marginLeft:50, marginRight:3}}><IconButton onClick={toggleLike} className={classes.thecolor} 
+            ><HeartOpen></HeartOpen></IconButton> {numLikes-1}</span>}</div></pre>   
+             
             <div style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginBottom:60
         }} className={classes.darkblue}>Comments  ({post.length})</div>
 {isLoggedIn ? <div> 
     <div  style={{float: "left", marginLeft: "400px", borderRadius: "50%", overflow:"hidden",marginTop:25, marginRight:20}}>
             {/* <img style={{width: 80}} src={photoExist(photo)}></img> */}
             {imageAsUrl.imgUrl !== "" ? <img  style={{width: 80}} src={imageAsUrl.imgUrl} alt="image tag" /> : 
-            <img className={classes.img} src={"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png"} alt="image tag" />}</div>
+            <img className={classes.img} style={{width: 80}}  src={"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png"} alt="image tag" />}</div>
 <div className={classes.title}  style={{textAlign: "justify", marginRight: "400px", marginLeft: "500px"}}>{firstName}</div>
 <div style={{display:"flex",textAlign: "justify", marginLeft: "400px", marginBottom:40}}>
     <TextField multiline rows={2} variant="outlined" onChange={handleChange} value={newComment}
