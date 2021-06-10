@@ -12,9 +12,13 @@ import {
 } from "react-router-dom";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
+import ItemImage from "./ItemImage";
+import { borders } from "@material-ui/system";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 function DisplayStore() {
   const [productData, setProductData] = useState();
@@ -37,7 +41,12 @@ function DisplayStore() {
   return (
     <div>
       <h1>The Store</h1>
-      <Link to="/myCart">View Cart</Link>
+      <Link to="/myCart">
+        <IconButton style={{ bottom: 7, right: 3 }}>
+          <ShoppingCartIcon />
+        </IconButton>
+      </Link>
+
       <GridList style={{ justifyContent: "center" }}>
         {productData && <DisplayItems data={productData} />}
       </GridList>
@@ -67,24 +76,30 @@ function DisplayItems(props) {
         <Paper
           style={{
             width: "37%",
-            height: "17vw",
+            height: "auto",
             display: "inline-block",
             margin: "3%",
             padding: "2%",
             backgroundColor: "#C4D5C4",
           }}
+          className="ItemCover"
+          onClick={() => {
+            handleClickOpen(i);
+          }}
           elevation={3}
         >
-          <h3 style={{ color: "#1f4060" }}>{i.name}</h3>
-          <p style={{ color: "#004080" }}>Price: {i.price}</p>
-          <button onClick={() => checkoutItem(i)}>Add to cart</button>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => handleClickOpen(i)}
-          >
-            Product Details
-          </Button>
+          <div>
+            <h3 style={{ color: "#1f4060" }}>{i.name}</h3>
+            <p style={{ bottom: 7, right: 3 }}>Price: {i.price}</p>
+            <ItemImage item={i} />
+            <Button
+              variant="outlined"
+              style={{ color: "#2F2C7A" }}
+              onClick={() => checkoutItem(i)}
+            >
+              Add to cart
+            </Button>
+          </div>
         </Paper>
       ))}
       {value && (
@@ -127,6 +142,7 @@ function SimpleDialog(props) {
       open={open}
     >
       <DialogTitle id="simple-dialog-title">{value.name}</DialogTitle>
+      <DialogContent>{value.details}</DialogContent>
     </Dialog>
   );
 }
