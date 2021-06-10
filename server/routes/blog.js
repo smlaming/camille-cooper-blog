@@ -33,6 +33,19 @@ app.get("/get", async (req, res) => {
       res.send(comments);
   });
 
+  app.post("/addpost", async (req, res) => {
+    const { title, photo, description, date, fulltext, quote } = req.body;
+    const resp = await db.collection("blog").add({
+        title,
+        description,
+        quote,
+        photo,
+        date,
+        fulltext
+      });
+    console.log("added blog post with id: ", resp.id);
+  });
+
   app.post("/addcomment", async (req, res) => {
     const { name, photo, comment, date, id } = req.body;
     const resp = await db.collection("blog").doc(id).collection("comments").add({

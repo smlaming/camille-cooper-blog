@@ -3,6 +3,9 @@ import Button from '@material-ui/core/Button';
 import React, {  useState} from "react";
 import { Link, } from "react-router-dom";
 import {Box} from '@material-ui/core';
+import { UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
+import AddPost from "./addpost"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,14 +25,14 @@ const useStyles = makeStyles((theme) => ({
 },
 blurb: {
     color: "black",
-    fontFamily: 'Montserrat',
+    fontFamily: 'Inter',
     fontSize: 22},
 descriptext: {
     fontFamily: 'Inter',
     fontSize: 20,
 },
 datetext: {
-    fontFamily: 'Montserrat',
+    fontFamily: 'Inter',
     fontSize: 17
 },
 conttext :{
@@ -40,12 +43,21 @@ conttext :{
 },
 thecolor :{
     color: "#2f2c7a",
-}
+},button: {
+    backgroundColor: "#c4d5c4",
+    color: "#2f2c7a",
+    height: 50,
+    width:190,
+    fontWeight: "bold",
+    marginTop: 30
+},
 }));
 
-export default function Header() {
+export default function BlogList() {
   const classes = useStyles();
   const [blog, setBlog] = useState([]);
+  const { isAdmin } = useContext(UserContext);
+
   const Loading = () =>{
     if (blog.length === 0) {
         fetch("http://localhost:8000/blog/get")
@@ -62,8 +74,12 @@ export default function Header() {
   return (
 <div style={{paddingTop: "1%"}}>
 <h2 style={{marginLeft: 800}}> {Loading()}</h2>
+{/* <h1 className={classes.title} >THE LATEST & GREATEST </h1> */}
 <h1 className={classes.title} >THE LATEST & GREATEST </h1>
-{/* <div className={classes.blurb}>A blog following the journies of the spontaneous digital nomad and social influencer, Camille.</div> */}
+<div className={classes.blurb}>A blog following the journeys of the spontaneous digital nomad and social influencer, Camille.</div>
+{isAdmin ? <AddPost
+setBlog={setBlog}
+></AddPost> : ""}
 {blog.map((post)=>(
     <Box display="flex" alignItems="center" justifyContent="center" 
     height={300} width={1200}  m={1} 
