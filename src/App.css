@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  margin-top: 158px;
 }
 
 .App-logo {
@@ -37,10 +39,15 @@
   }
 }
 
+
 .ItemCover {
   transition: 0.2s background-color;
-}
+
 .ItemCover:hover {
   background-color: rgb(0, 0, 0, 0.05) !important;
   cursor: pointer;
+
+body {
+  background-color: #f7faff;
+
 }

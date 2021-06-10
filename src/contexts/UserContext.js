@@ -4,23 +4,32 @@ const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState();
-    const [role, setRole] = useState("none");
+    const [isAdmin, setIsAdmin] = useState(false);
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
+    const [userName, setUserName] = useState();
+    const [photo, setPhoto] = useState();
     const [id, setID] = useState();
+    const [transactions, setTransactions] = useState([])
+    const [shippingAddress, setShippingAddress] = useState(null)
+    const [email, setEmail] = useState();
     const [userReload, forceUserReload] = useState("false");
     useEffect(() => {
-        if (!user) {
-            setRole("none");
-        } else {
-            fetch("/user?uid=" + user.uid)
+        if (user) {
+
+            fetch("http://localhost:8000/user/login?uid=" + user.uid)
                 .then((res) => res.json())
                 .then((res) => {
-                    setRole(res.role);
                     setFirstName(res.firstName);
                     setLastName(res.lastName);
-                    setID(res.id);
+                    setID(res.uid);
+                    setUserName(res.userName)
+                    setTransactions(res.transactions)
                     forceUserReload(false);
+                    setPhoto(res.photo)
+                    setIsAdmin(res.admin)
+                    setEmail(user.email)
+
                 });
         }
     }, [user, userReload]);
@@ -31,12 +40,17 @@ const UserContextProvider = ({ children }) => {
             value={{
                 user,
                 isLoggedIn,
-                role,
+                isAdmin,
                 id,
                 firstName,
                 lastName,
+                userName,
+                transactions,
+                shippingAddress,
+                email,
                 forceUserReload,
                 setUser,
+                photo
             }}
         >
             {children}
