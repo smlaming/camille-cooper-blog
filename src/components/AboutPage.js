@@ -79,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize:22, 
         textAlign: "left",
         lineHeight: 2,
+
       },
       quote:{
         color: "#29335C",
@@ -97,12 +98,12 @@ const useStyles = makeStyles((theme) => ({
           }}>━━━━━━━━━━━━━━━━ ABOUT ME ━━━━━━━━━━━━━━━━</h1>
     
         <img src={pic} style={{width:"25%",float: "left", marginLeft: "300px", marginTop:"110px", border: "solid", borderColor:"#c4d5c4", borderWidth:"thick"}}></img>
-        <div  justifyContent="flex-start" >
-        <Typography className={classes.title} component="h2" variant="h5" style={{marginTop:"60px", marginLeft:"1660px"}}>
+  
+        <div className={classes.title} component="h2" variant="h5" style={{marginTop:"60px", marginRight:"350px", float:"right"}}>
                 My Life
-              </Typography>     
+                  </div>
         <div className={classes.description} 
-        style={{textAlign: "justify", marginRight: "350px", marginLeft: "900px", marginTop:"20px", whiteSpace:"pre-line", }}>
+        style={{textAlign: "justify", marginRight: "350px", marginLeft: "900px", marginTop:"150px", whiteSpace:"pre-line", }}>
            <p> Camille is a recent college graduate from UVA currently traveling from city to city exploring what urban life offers while taking advantage of any opportunity to get back to the
               great outdoors. </p>
               Educated as a chemical engineer, Camille threw that into the wind to pursue software development and adventure. 
@@ -117,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
         style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginTop:"50px",border: "solid", borderColor: "#c4d5c4"}}
         ><div style={{marginLeft:20, marginRight:20}}>"{post.data.quote}"</div></div>   */}
            
-        </div>
+    
         
         <Typography className={classes.title} component="h2" variant="h5" style={{marginTop:"60px", marginLeft:"300px"}}>
                 History of Camille's Corner
