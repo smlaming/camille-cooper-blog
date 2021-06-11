@@ -22,6 +22,7 @@ function DisplayCart() {
   const [cartData, setCartData] = useState();
 
   const getItems = () => {
+    console.log("Get Items called");
     fetch("http://localhost:8000/cart/items")
       .then((response) => response.json())
       .then((response) => {
@@ -37,8 +38,11 @@ function DisplayCart() {
 
   return (
     <div>
-      <h1>Your Cart</h1>
-      <Link to="/">
+      <h1 style={{ fontFamily: "Playfair Display", fontSize: 34 }}>
+        Your Cart
+      </h1>
+      <hr></hr>
+      <Link to="/Store">
         <Button>Back To Shopping</Button>
       </Link>
       <GridList style={{ justifyContent: "center" }}>
@@ -46,69 +50,66 @@ function DisplayCart() {
       </GridList>
     </div>
   );
-}
 
-function DisplayItems(props) {
-  const [details, setDetails] = useState(false);
-  const [description, setDescription] = useState();
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState();
+  function DisplayItems(props) {
+    const [details, setDetails] = useState(false);
+    const [description, setDescription] = useState();
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState();
 
-  function removeItem(i) {
-    axios.delete("http://localhost:8000/cart/remove", {
-      data: {
-        item: i.name,
-      },
-    });
+    async function removeItem(i) {
+      await axios.delete("http://localhost:8000/cart/remove", {
+        data: {
+          item: i.name,
+        },
+      });
+      getItems();
+    }
+
+    async function handleClickOpen(i) {
+      console.log("i equals", i);
+      await setValue(i);
+      setOpen(true);
+    }
+
+    const handleClose = () => {
+      setOpen(false);
+    };
+
+    return (
+      <div>
+        {props.data.map((i) => (
+          <Paper
+            style={{
+              width: "37%",
+              height: "300px",
+              display: "inline-block",
+              margin: "3%",
+              padding: "2%",
+              backgroundColor: "#C4D5C4",
+            }}
+            elevation={3}
+          >
+            <div>
+              <h3 style={{ color: "#1f4060" }}>{i.name}</h3>
+              <p style={{ bottom: 7, right: 3 }}>Price: {i.price}</p>
+              <ItemImage item={i} />
+              <Button
+                variant="outlined"
+                style={{ color: "#2F2C7A" }}
+                onClick={() => removeItem(i)}
+              >
+                Remove From Cart
+              </Button>
+            </div>
+          </Paper>
+        ))}
+        {value && (
+          <SimpleDialog value={value} open={open} onClose={handleClose} />
+        )}
+      </div>
+    );
   }
-
-  async function handleClickOpen(i) {
-    console.log("i equals", i);
-    await setValue(i);
-    setOpen(true);
-  }
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <div>
-      {props.data.map((i) => (
-        <Paper
-          style={{
-            width: "37%",
-            height: "auto",
-            display: "inline-block",
-            margin: "3%",
-            padding: "2%",
-            backgroundColor: "#C4D5C4",
-          }}
-          className="ItemCover"
-          onClick={() => {
-            handleClickOpen(i);
-          }}
-          elevation={3}
-        >
-          <div>
-            <h3 style={{ color: "#1f4060" }}>{i.name}</h3>
-            <p style={{ bottom: 7, right: 3 }}>Price: {i.price}</p>
-            <ItemImage item={i} />
-            <Button
-              variant="outlined"
-              style={{ color: "#2F2C7A" }}
-              onClick={() => removeItem(i)}
-            >
-              Remove From Cart
-            </Button>
-          </div>
-        </Paper>
-      ))}
-      {value && (
-        <SimpleDialog value={value} open={open} onClose={handleClose} />
-      )}
-    </div>
-  );
 }
 
 export default DisplayCart;

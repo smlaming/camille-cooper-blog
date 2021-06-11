@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GridList } from "@material-ui/core";
 import { Paper, IconButton } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import {
   BrowserRouter as Router,
@@ -40,13 +41,9 @@ function DisplayStore() {
 
   return (
     <div>
-      <h1>The Store</h1>
-      <Link to="/myCart">
-        <IconButton style={{ bottom: 7, right: 3 }}>
-          <ShoppingCartIcon />
-        </IconButton>
-      </Link>
-
+      <hr></hr>
+      <h1 style={{ fontFamily: "Playfair Display", fontSize: 34 }}>Store</h1>
+      <hr></hr>
       <GridList style={{ justifyContent: "center" }}>
         {productData && <DisplayItems data={productData} />}
       </GridList>
@@ -76,22 +73,30 @@ function DisplayItems(props) {
         <Paper
           style={{
             width: "37%",
-            height: "auto",
+            height: "300px",
             display: "inline-block",
             margin: "3%",
             padding: "2%",
             backgroundColor: "#C4D5C4",
           }}
-          className="ItemCover"
-          onClick={() => {
-            handleClickOpen(i);
-          }}
           elevation={3}
         >
           <div>
-            <h3 style={{ color: "#1f4060" }}>{i.name}</h3>
+            <h3
+              style={{ color: "#1f4060" }}
+              onClick={() => {
+                handleClickOpen(i);
+              }}
+            >
+              {i.name}
+            </h3>
             <p style={{ bottom: 7, right: 3 }}>Price: {i.price}</p>
-            <ItemImage item={i} />
+            <ItemImage
+              item={i}
+              onClick={() => {
+                handleClickOpen(i);
+              }}
+            />
             <Button
               variant="outlined"
               style={{ color: "#2F2C7A" }}

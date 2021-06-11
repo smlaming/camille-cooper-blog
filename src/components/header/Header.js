@@ -1,27 +1,26 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 import React, { Fragment } from "react";
 import { Route, Link } from "react-router-dom";
-import Divider from "@material-ui/core/Divider"
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { Instagram, Twitter } from '@material-ui/icons';
+import Divider from "@material-ui/core/Divider";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { Instagram, Twitter } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     backgroundColor: "#c4d5c4",
     color: "#29335c",
-
   },
   tumblr: {
     color: "#29335c",
     fontFamily: "Helevetica",
     fontWeight: "bold",
-    fontSize: 28
+    fontSize: 28,
   },
   toolbarTitle: {
     flex: 4,
@@ -30,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     // fontFamily: 'Lobster Two',
     fontFamily: "Playfair Display",
     fontSize: 48,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
 }));
 
@@ -38,15 +37,12 @@ export default function Header() {
   const classes = useStyles();
 
   const sections = [
-    { title: 'Home', url: '/' },
-    { title: 'About', url: '/About' },
-    { title: 'Blog', url: '/Blog' },
-    { title: 'Forum', url: '/Forum' },
-    { title: 'Store', url: '/Store' },
+    { title: "Home", url: "/" },
+    { title: "About", url: "/About" },
+    { title: "Blog", url: "/Blog" },
+    { title: "Forum", url: "/Forum" },
+    { title: "Store", url: "/Store" },
   ];
-
-
-
 
   return (
     <React.Fragment>
@@ -56,23 +52,26 @@ export default function Header() {
             className={classes.toolbar}
             href="https://www.instagram.com/"
             target="_blank"
-            style={{ marginLeft: 30 }}>
+            style={{ marginLeft: 30 }}
+          >
             <Instagram />
           </IconButton>
           <IconButton
             className={classes.toolbar}
             href="https://www.twitter.com/camilles_corner"
             target="_blank"
-            style={{ marginLeft: 10 }}>
+            style={{ marginLeft: 10 }}
+          >
             <Twitter />
           </IconButton>
           <IconButton
             className={classes.tumblr}
             href="https://www.tumblr.com/"
             target="_blank"
-            style={{ marginLeft: 10 }}>
+            style={{ marginLeft: 10 }}
+          >
             t
-        </IconButton>
+          </IconButton>
           <Typography
             component="h2"
             variant="h5"
@@ -82,20 +81,24 @@ export default function Header() {
             className={classes.toolbarTitle}
           >
             Camille's Corner
-        </Typography>
+          </Typography>
           <Button
             className={classes.toolbar}
-            button component={Link}
+            button
+            component={Link}
             to="/Account"
             style={{ marginRight: 10 }}
-            size="small">
+            size="small"
+          >
             Account
-        </Button>
+          </Button>
           <IconButton
             className={classes.toolbar}
-            button component={Link}
-            to="/ShoppingCart"
-            style={{ marginRight: 30 }}>
+            button
+            component={Link}
+            to="/myCart"
+            style={{ marginRight: 30 }}
+          >
             <ShoppingCartIcon />
           </IconButton>
           {/* <Button 
@@ -112,19 +115,20 @@ export default function Header() {
           render={({ location }) => (
             <Fragment>
               <Tabs
-                TabIndicatorProps={{ style: { background: '#29335c' } }}
+                TabIndicatorProps={{ style: { background: "#29335c" } }}
                 className={classes.toolbar}
                 centered
-                value={location.pathname}>
+                value={location.pathname}
+              >
                 {sections.map((section) => (
                   <Tab
                     fontWeight="bold"
                     label={section.title}
                     value={section.url}
-                    button component={Link}
+                    button
+                    component={Link}
                     to={section.url}
-                  >
-                  </Tab>
+                  ></Tab>
                 ))}
               </Tabs>
             </Fragment>
