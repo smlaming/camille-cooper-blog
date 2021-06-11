@@ -1,14 +1,36 @@
 import React, { useState } from "react";
 import firebase from "../firebase/firebase";
-import { TextField, Button, Paper } from "@material-ui/core";
+import { TextField, Button, Paper , Box} from "@material-ui/core";
 import { useHistory, NavLink } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import Link from "@material-ui/core/Link"
+const useStyles = makeStyles((theme) => ({
+    button: {
+      backgroundColor: "#c4d5c4",
+      color: "#2f2c7a",
+      height: 50,
+      width: "27em",
+      fontWeight: "bold",
+      marginTop: 30,
+      fontSize: 22,
+  },
+  darkblue: {
+    color: "#2f2c7a",
+    fontFamily: 'Playfair Display',
+    fontSize: 55,
+    fontWeight: "bold",
+    paddingBottom: 10,
+}
+  }));
 
 const LoginPage = () => {
-    document.body.style = 'background:"white";';
+    document.body.style = 'background:"grey";';
 
+    const classes = useStyles();
     const history = useHistory();
     const { setUser, forceUserReload } = useContext(UserContext);
     const [email, setEmail] = useState("");
@@ -35,8 +57,9 @@ const LoginPage = () => {
     return (
         <div>
 
-            <div >
-                <h1>Login</h1>
+            <div style={{float: "right", marginRight: "210px", marginTop:"220px"}}>
+          
+                <h1 className={classes.darkblue}>Login</h1>
                 <form
                     style={{
                         display: "flex",
@@ -49,36 +72,38 @@ const LoginPage = () => {
                     <TextField
                         type="text"
                         value={email}
+                        variant="outlined"
                         onChange={({ target }) => setEmail(target.value)}
                         placeholder="Email"
-                        style={{ width: "15em" }}
+                        style={{ width: "37em" }}
                     />
                     <br />
                     <TextField
                         type="password"
                         value={password}
+                        variant="outlined"
                         onChange={({ target }) => setPassword(target.value)}
                         placeholder="Password"
-                        style={{ width: "15em" }}
+                        style={{ width: "37em" }}
                     />
 
                     <br />
                     <Button
                         type="submit"
                         variant="contained"
-                        color="primary"
-                        style={{ width: "7em", backgroundColor: "#2E3B55" }}
                         onClick={logIn}
+                        className={classes.button}
+                        style={{marginBottom:10}}
                     >
-                        Log In
+                        SIgn in
                     </Button>
                     <br />
-                    <NavLink className="navbar-item" activeClassName="is-active" to="/sign_up">
-                        Or Create An Account
-            </NavLink>
+                    <Link style={{fontFamily: "inter", color: "#2f2c7a", paddingBottom: 40}} href="/sign_up">
+                        Don't have an account? Create one.
+            </Link>
                 </form>
             </div>
-
+            <img style={{width: 1100, float: "left", paddingRight:1}} src="https://secure.img1-ag.wfcdn.com/im/56274461/resize-h800%5Ecompr-r85/1096/109639462/Sia+2+-+Person+Seating+Group+with+Cushions.jpg"></img>
         </div>
     );
 };

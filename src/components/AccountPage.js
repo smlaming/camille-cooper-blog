@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row",
         flex: 1,
-        marginBottom: 10
+        marginBottom: 10,
     },
     info: {
         padding: 50,
@@ -139,15 +139,15 @@ function AccountPage() {
     return (
         <div className={classes.root}>
             <Header />
-            <h1>My Account</h1>
-            <h2>
+            <h1 style={{fontFamily: "Playfair Display"}}>My Account</h1>
+            <h2 style={{fontFamily: "Inter"}}>
                 Welcome, {firstName} {lastName}!
       </h2>
 
 
             <div className={classes.body}>
                 <div className={classes.accountContainer}>
-                    <h2 style={{ textAlign: "center" }}>Account Info</h2>
+                    <h2 style={{ textAlign: "center", fontFamily: "Playfair Display" }}>Account Info</h2>
                     <div className={classes.info}>
 
 
@@ -160,7 +160,7 @@ function AccountPage() {
 
 
                         <br />
-                        <div style={{ textAlign: "left", paddingLeft: 20 }}>
+                        <div style={{ textAlign: "left", paddingLeft: 20, fontFamily: "inter"}}>
                             First Name: {firstName} <br />
                             Last Name : {lastName} <br />
                             Username: {userName} <br />
@@ -170,9 +170,21 @@ function AccountPage() {
 
                     </div>
                     <div classes={classes.action}>
+
+
                         <Button
                             variant="contained"
-                            style={{ color: "#ff6961", maxWidth: "20%", marginRight: 17 }}
+                            style={{ backgroundColor: "#2f2c7a", color: "white", maxWidth: "20%", fontSize: 11 , marginBottom: 50, marginLeft: "70px", float: "left"}}
+                            onClick={() => {
+                                handleDelete()
+                            }}
+                        >
+                            Delete Account
+                             </Button>
+
+                             <Button
+                            variant="contained"
+                            style={{ color: "#2f2c7a", maxWidth: "20%", marginLeft: "110px", marginBottom: 50 }}
                             onClick={() => {
                                 firebase.auth().signOut();
                                 window.location.reload();
@@ -181,20 +193,10 @@ function AccountPage() {
                         >
                             Log Out
                          </Button>
-
-                        <Button
-                            variant="contained"
-                            style={{ backgroundColor: "#ff6961", color: "black", maxWidth: "20%", fontSize: 11 }}
-                            onClick={() => {
-                                handleDelete()
-                            }}
-                        >
-                            Delete Account
-                             </Button>
                     </div>
                 </div>
                 <div className={classes.historyContainer}>
-                    <h2>Purchase History</h2>
+                    <h2 style={{fontFamily: "Playfair Display"}}>Purchase History</h2>
                     {
                         transactions.length!=0 ? <div>{
                             transactions.map((t) => {

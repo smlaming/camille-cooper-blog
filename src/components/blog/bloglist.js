@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: "black",
-    // fontFamily: 'Merriweather',
-    fontFamily: 'Inter',
-    fontSize: 30
+    fontFamily: 'Playfair Display',
+    // fontFamily: 'Inter',
+    fontSize: 34
 },
 blurb: {
     color: "black",
@@ -83,7 +83,7 @@ useEffect(() => {
   return (
 <div style={{paddingTop: "1%"}}>
 {/* <h2 style={{marginLeft: 800}}> {Loading()}</h2> */}
-<h1 className={classes.title} >THE LATEST & GREATEST </h1>
+<h1 className={classes.title} >THE BLOG </h1>
 <div className={classes.blurb}>A blog following the journeys of the spontaneous digital nomad and social influencer, Camille.</div>
 {isAdmin ? <AddPost
 setBlog={setBlog}
