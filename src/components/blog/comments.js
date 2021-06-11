@@ -11,6 +11,7 @@ import Comment from "@material-ui/icons/Comment"
 import firebase from "../../firebase/firebase";
 import HeartOpen from "@material-ui/icons/FavoriteBorder"
 import IconButton from '@material-ui/core/IconButton';
+import { ScatterPlot } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
     descriptext: {
         fontFamily: 'Inter',
@@ -151,12 +152,19 @@ const toggleLike = ()=>{
             <div className={classes.thecolor} style={{marginBottom:20, display:"flex", alignItems:"center", flexWrap:"wrap"}}>
             <Eye style={{ marginRight:10}}></Eye> {views}
             <Comment style={{marginLeft:60,marginRight:10}}></Comment>{post.length}
-            {like ? 
+            {isLoggedIn ? <div> 
+                {like ? 
             <span   style={{marginLeft:50, marginRight:3}}><IconButton className={classes.thecolor}  onClick={toggleLike}
             ><Heart ></Heart></IconButton> {numLikes} </span>
             : 
             <span style={{marginLeft:50, marginRight:3}}><IconButton onClick={toggleLike} className={classes.thecolor} 
-            ><HeartOpen></HeartOpen></IconButton> {numLikes-1}</span>}</div></pre>   
+            ><HeartOpen></HeartOpen></IconButton> {numLikes-1}</span>}
+            </div> : <div>
+            <span style={{marginLeft:50, marginRight:3}}>
+            <HeartOpen className={classes.thecolor} style={{transform: "scale(1.3)", marginRight:4}}></HeartOpen> {numLikes-1}</span>
+                </div>}
+            
+            </div></pre>   
              
             <div style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginBottom:60
         }} className={classes.darkblue}>Comments  ({post.length})</div>

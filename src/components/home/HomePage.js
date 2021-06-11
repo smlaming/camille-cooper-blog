@@ -11,7 +11,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 // import pic from "./background.png"
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import pic from "./background2.png"
+import FilterHdrIcon from '@material-ui/icons/FilterHdr';
+import LocationCityIcon from '@material-ui/icons/LocationCity';
 
 const useStyles = makeStyles((theme) => ({
     mainFeaturedPost: {
@@ -98,9 +101,16 @@ const useStyles = makeStyles((theme) => ({
             <CardContent>
               <Typography className={classes.title} component="h2" variant="h5">
                 Biography
+              </Typography>          
+              <Typography style={{textAlign: "left", marginLeft: 22, fontFamily: "Inter", marginBottom: 7, marginTop: 7,
+            display:"flex", alignItems:"center", flexWrap:"wrap"}} variant="subtitle1" color="textSecondary">
+                <WbSunnyIcon style={{marginRight: 5}}></WbSunnyIcon>Virgo Libra Cusp
+                <FilterHdrIcon style={{marginLeft: 25, marginRight:5}}></FilterHdrIcon> Nature Lover
+                <LocationCityIcon style={{marginLeft: 25, marginRight:5}}> </LocationCityIcon>City Girl
               </Typography>
               <Typography className={classes.description} variant="subtitle1" paragraph>
               Camille is a recent college graduate from UVA currently traveling from city to city exploring what urban life offers while taking advantage of any opportunity to get back to the great outdoors.
+              She recently began gaining popularity on social media, since then she has grown a fanbase....
               </Typography>
               <Link variant="subtitle1" href="/About" style={{color: "black", 
               marginLeft:20, marginBottom:20,fontFamily: "inter", fontWeight:"bold", float:"left"}}>
