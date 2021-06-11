@@ -1,8 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import LoginPage from "./components/LoginPage";
-import Store from "./components/StorePage";
-import Cart from "./components/CartPage";
+import Store from "./components/store/StorePage";
+import Cart from "./components/store/CartPage";
 import { Route, Switch } from "react-router-dom";
 import React, { Fragment } from "react";
 import Header from "./components/header/Header";
