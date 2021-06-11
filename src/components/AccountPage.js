@@ -197,7 +197,7 @@ function AccountPage() {
                 </div>
                 <div className={classes.historyContainer}>
                     <h2 style={{fontFamily: "Playfair Display"}}>Purchase History</h2>
-                    {
+                    {/* {
                         transactions.length!=0 ? <div>{
                             transactions.map((t) => {
                                 return (
@@ -207,7 +207,7 @@ function AccountPage() {
                         </div>
                             : <div>  You have no purchases! </div>
 
-                    }
+                    } */}
 
                 </div>
             </div>

@@ -16,6 +16,7 @@ const Forum = () => {
 
     useEffect(() => {
         console.log(firstName);
+        console.log(user != null);
         axios.get("http://localhost:8000/all_posts").then(function(data) {
             setMyPosts(data.data);
             console.log(data.data);
@@ -29,8 +30,8 @@ const Forum = () => {
 
         const curDate = new Date();
         var profURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png";
-        console.log(user);
-        if (user) {
+        console.log(user == true);
+        if (user != null) {
             storage.ref('images').child(user.uid).getDownloadURL()
                 .then(fireBaseUrl => {
                     console.log(fireBaseUrl);

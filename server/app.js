@@ -111,7 +111,6 @@ app.post("/users", async (req, res) => {
         name: req.body.name,
         profileImage: req.body.profileImage,
     };
-    
     db.collection("forum")
       .add(post)
       .then((docRef) => {
@@ -130,6 +129,7 @@ app.post("/users", async (req, res) => {
             querySnapshot.forEach((post) => {
                 posts.push({ ...post.data(), id: post.id });
             });
+            posts.reverse();
         })
         .then(() => res.json(posts));
   });
