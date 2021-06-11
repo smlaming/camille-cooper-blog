@@ -6,6 +6,7 @@ import { useContext } from "react";
 import firebase from "../firebase/firebase";
 import 'react-discussion-board/dist/index.css';
 import Box from "@material-ui/core/Box"
+
 const Forum = () => {
 
     const { user, firstName } = useContext(UserContext);
@@ -55,7 +56,7 @@ const Forum = () => {
       <div >
         <div style={{marginTop:"190px"}}>
         <h1 style={{fontFamily: "Playfair Display", fontSize: 35}}>Welcome to the Forum!</h1>
-        <div style={{fontFamily: "Inter", fontSize:20}}>Feel free to chat with the community ♡</div></div>
+        <div style={{fontFamily: "Inter", fontSize:20}}>Feel free to chat with the community ☺ </div></div>
         <div style={{marginRight:"600px", marginLeft:"600px",  marginTop:"40px"}}>
           <Box boxShadow={2}>
             <DiscussionBoard posts={myPosts} onSubmit={submitPost} firstName={firstName === undefined ? "" : "by " + firstName} />
