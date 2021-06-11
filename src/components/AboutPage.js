@@ -12,10 +12,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 // import pic from "./background.png"
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import pic from "./background2.png"
+import pic from "./home/background2.png"
 import FilterHdrIcon from '@material-ui/icons/FilterHdr';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import PublicIcon from '@material-ui/icons/Public';
+
 
 const useStyles = makeStyles((theme) => ({
     mainFeaturedPost: {
@@ -93,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
         > Camille is a recent college graduate from UVA currently traveling from city to city exploring what urban life offers while taking advantage of any opportunity to get back to the great outdoors. </Typography>
 </Box> */}
 <Grid container spacing={1}>
-<Grid item xs={12} md={6}>
+<Grid item xs={12} md={12}>
       <CardActionArea component="a" href="/About" style={{marginLeft: "80px", 
         marginTop: "30px", 
          }}>
@@ -110,21 +111,26 @@ const useStyles = makeStyles((theme) => ({
                 <LocationCityIcon style={{marginLeft: 25, marginRight:5}}> </LocationCityIcon>City Girl
               </Typography>
               <Typography className={classes.description} variant="subtitle1" paragraph>
-              Camille is a recent college graduate from UVA currently traveling from city to city exploring what urban life offers while taking advantage of any opportunity to get back to the great outdoors.
-              She recently began gaining popularity on social media, since then she has grown a fanbase....
+              Camille is a recent college graduate from UVA currently traveling from city to city exploring what urban life offers while taking advantage of any opportunity to get back to the
+              great outdoors. Educated as a chemical engineer, Camille threw that into the wind to pursue software development and adventure. 
+              Exclusively working for new start-ups as a freelancer, she has been able to have extended stays in NYC, Denver, SF, Seattle, and Barcelona. S
+              he hopes to go next to Austin or London, but, in truth, with her, you never know where she'll be next. Known to be spontaneous and indecisive, 
+              Camille chose this life because it allows her to explore every option that life provides. She loves being a digital nomad because each new city brings new stories and 
+              opportunities. She never realized that documenting this way of life would garner such a large following for which she is grateful every day. Her goal is to promote 
+              adventures and positivity. One day she hopes to go to every national park.
+              <p>Her hobbies include hiking, climbing, yoga, snowboarding, and anything with music.</p>
+              <p>She is a Virgo Libra cusp.</p>
+              <p>Best parts of nature: trees, mountains, and rivers</p>
+              <p>Best parts of cities: music and rooftops</p>
               </Typography>
-              <Link variant="subtitle1" href="/About" style={{color: "black", 
-              marginLeft:20, marginBottom:20,fontFamily: "inter", fontWeight:"bold", float:"left"}}>
-              —  FIND OUT MORE
-              </Link>
+              
             </CardContent>
           </div>
         </Card>
       </CardActionArea>
       
-    </Grid>
 
-    <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={12}>
       <CardActionArea component="a" href="/About" style={{marginLeft: "80px", 
         marginTop: "30px", 
          }}>
@@ -141,81 +147,22 @@ const useStyles = makeStyles((theme) => ({
                 <LocationCityIcon style={{marginLeft: 25, marginRight:5}}> </LocationCityIcon>City Girl
               </Typography>
               <Typography className={classes.description} variant="subtitle1" paragraph>
-              Camille's Corner started back in the summer of 2019 when Camille first moved to NYC for an internship. Sitting behind a screen all day in the middle of a giant concrete jungle made her long for the proper outdoors. Hopelessly stuck between being drawn to the culture of cities and the allure of Mother Nature....
+              Camille's Corner started back in the summer of 2019 when Camille first moved to NYC for an internship. 
+              Sitting behind a screen all day in the middle of a giant concrete jungle made her long for the proper outdoors. 
+              Hopelessly stuck between being drawn to the culture of cities and the allure of Mother Nature, Camille decided to bridge the two worlds through adventure and discovery, 
+              adopting a digital nomad life that took her across the country. The name of the blog comes from the corner in her room 
+              where Camille hung up tapestries that depicted beautiful landscapes juxtaposed against her Soho apartment. 
+              <p>The goal of Camille's Corner is to show others that in every city, nature offers an escape, and no one has to choose only one world.</p>
               </Typography>
-              <Link variant="subtitle1" href="/About" style={{color: "black", 
-              marginLeft:20, marginBottom:20,fontFamily: "inter", fontWeight:"bold", float:"left"}}>
-              —  FIND OUT MORE
-              </Link>
-            </CardContent>
-          </div>
-        </Card>
-      </CardActionArea>
-      
-    </Grid>
-
-    <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="/Blog" style={{marginLeft: "80px", 
-        marginTop: "30px", 
-         }}>
-        <Card className={classes.card2}>
-          <div className={classes.cardDetails}>
               
-      
-            <CardContent>
-              <Typography className={classes.title} component="h2" variant="h5">
-                Latest Blog Post
-              </Typography>
-            
-             <img style={{width:200, float:"left", marginLeft:20, marginBottom: 20 , marginRight: 30, marginTop: 10}} src="https://i.pinimg.com/564x/9e/e0/5a/9ee05aa459a61e1c5fbdf4626207f4a5.jpg"/>
-             <Typography style={{textAlign: "left", marginLeft: 20, fontFamily: "Inter"}} variant="subtitle1" color="textSecondary">
-                June 8th, 2021
-              </Typography>
-              <Typography className={classes.title2} component="h2" variant="h5">
-                Collection Dropping Soon!
-              </Typography>
-              <Typography className={classes.description} variant="subtitle1" paragraph>
-              Check out the latest collection dropping this Friday. There's so many different styles at affordable prices. I know you're going to love the bucket hats,
-              I can't wait to share it with you all!
-              </Typography>
-              <Link variant="subtitle1" href="/Blog"  style={{color: "black", 
-              marginLeft:20, marginBottom:20,fontFamily: "inter", fontWeight:"bold", float:"left"}}>
-              —  GO TO BLOG
-              </Link>
             </CardContent>
           </div>
-          
         </Card>
       </CardActionArea>
       
     </Grid>
 
-    <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="/About" style={{marginLeft: "80px", 
-        marginTop: "30px", 
-         }}>
-        <Card className={classes.card}>
-          <div className={classes.cardDetails}>
-            <CardContent>
-              <Typography className={classes.title} component="h2" variant="h5">
-                Store
-              </Typography>          
-              <Typography style={{textAlign: "left", marginLeft: 22, fontFamily: "Inter", marginBottom: 7, marginTop: 7,
-            display:"flex", alignItems:"center", flexWrap:"wrap"}} variant="subtitle1" color="textSecondary">
-              </Typography>
-              <Typography className={classes.description} variant="subtitle1" paragraph>
-              Tori Gerbig, chief executive officer and founder of Pink Lily, praised the “power of Camille's influence, reach and engagement” and said she was certain “her community and the over two million women who shop Pink Lily” will be attracted to the collection.
-               My goal with this collaboration was to create something for everyone at an affordable price point.                   
-              </Typography>
-              <Link variant="subtitle1" href="/Store" style={{color: "black", 
-              marginLeft:20, marginBottom:20,fontFamily: "inter", fontWeight:"bold", float:"left"}}>
-              —  GO TO STORE
-              </Link>
-            </CardContent>
-          </div>
-        </Card>
-      </CardActionArea>
-      
+
     </Grid>
 
     </Grid>
