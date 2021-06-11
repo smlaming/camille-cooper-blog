@@ -26,10 +26,12 @@ const useStyles = makeStyles((theme) => ({
 blurb: {
     color: "black",
     fontFamily: 'Inter',
+    marginBottom:10,
     fontSize: 22},
 descriptext: {
     fontFamily: 'Inter',
     fontSize: 20,
+    
 },
 datetext: {
     fontFamily: 'Inter',
@@ -89,9 +91,9 @@ useEffect(() => {
 setBlog={setBlog}
 ></AddPost> : ""}
 {blog.map((post)=>(
-    <Box display="flex" alignItems="center" justifyContent="center" 
+    <Box display="flex" alignItems="center" justifyContent="center" boxShadow={1}
     height={300} width={1200}  m={1} 
-    style={{marginLeft:450, borderBottom: "solid", borderColor: "#c4d5c4", borderBottomWidth: "thin"}}>
+    style={{marginLeft:450, borderBottom: "solid", borderColor: "#c4d5c4", borderBottomWidth: "medium", marginTop:20}}>
         <img style={{marginLeft:30, marginBottom:10, width:190, marginRight:35}} src={post.photo}></img>
         <div display="block" position="absolute" justifyContent="flex-start" >
         <div className={classes.datetext} style={{ float:"left", marginRight: 800, marginLeft: 8}}>{post.date}</div> 

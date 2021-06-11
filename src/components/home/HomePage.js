@@ -41,9 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
         display: 'flex',
-        marginLeft: "80px", 
-        marginTop: "30px", 
-        marginRight: "110px", 
+        marginRight: "120px"
       },
       card2: {
         display: 'flex',
@@ -95,7 +93,9 @@ const useStyles = makeStyles((theme) => ({
 </Box> */}
 <Grid container spacing={1}>
 <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="/About">
+      <CardActionArea component="a" href="/About" style={{marginLeft: "80px", 
+        marginTop: "30px", 
+         }}>
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>
