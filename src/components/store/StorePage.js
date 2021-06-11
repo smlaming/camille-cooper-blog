@@ -41,9 +41,12 @@ function DisplayStore() {
 
   return (
     <div>
-
-      <h1 style={{fontFamily: "Playfair Display", fontSize: 35, marginTop:190}}>THE STORE</h1>
-      <Link to="/myCart" style={{color:"black"}}>
+      <h1
+        style={{ fontFamily: "Playfair Display", fontSize: 35, marginTop: 190 }}
+      >
+        THE STORE
+      </h1>
+      <Link to="/myCart" style={{ color: "black" }}>
         <IconButton style={{ bottom: 7, right: 3 }}>
           <ShoppingCartIcon />
         </IconButton>
@@ -153,7 +156,7 @@ function SimpleDialog(props) {
       open={open}
     >
       <DialogTitle id="simple-dialog-title">{value.name}</DialogTitle>
-      <DialogContent>{value.details}</DialogContent>
+      <DialogContent>{value.description}</DialogContent>
     </Dialog>
   );
 }
