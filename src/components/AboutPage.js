@@ -10,9 +10,10 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
-// import pic from "./background.png"
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import pic from "./home/background2.png"
+import pic from "./images/camille5.jpeg"
+import pic2 from "./images/camille4.jpeg"
+import pic3 from "./images/camille6.jpeg"
 import FilterHdrIcon from '@material-ui/icons/FilterHdr';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import PublicIcon from '@material-ui/icons/Public';
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#29335c",
         textAlign: "left",
         marginLeft: 20,
-        marginBottom: 10
+        marginBottom: 10,
       },
       title2:{
         fontFamily: "PlayFair Display", 
@@ -77,9 +78,14 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Inter", 
         fontSize:22, 
         textAlign: "left",
-        marginLeft: 20
+        lineHeight: 2,
       },
-
+      quote:{
+        color: "#29335C",
+        fontFamily: 'Lato',
+        fontSize: 35,
+        lineHeight: 2.5,
+      }
   }));
   
   export default function HomePage() {
@@ -87,85 +93,108 @@ const useStyles = makeStyles((theme) => ({
 
       return (
           <div >
-        <img src={pic} style={{width:"100%"}}></img>
-        {/* <Box boxShadow={2} style={{width: 700 ,  marginLeft: "100px"}}>
-        <h1 style={{textAlign: "justify",  whiteSpace:"pre-line", fontFamily: "PlayFair Display", fontSize:40, color: "#29335c"}}>Bio</h1>
-        <Typography style={{textAlign: "justify", marginRight: "100px", marginLeft: "100px", marginTop:"20px", whiteSpace:"pre-line", fontFamily: "Inter", fontSize:20,lineHeight: 2.5,}}
-        > Camille is a recent college graduate from UVA currently traveling from city to city exploring what urban life offers while taking advantage of any opportunity to get back to the great outdoors. </Typography>
-</Box> */}
-<Grid container spacing={1}>
-<Grid item xs={12} md={12}>
-      <CardActionArea component="a" href="/About" style={{marginLeft: "80px", 
-        marginTop: "30px", 
-         }}>
-        <Card className={classes.card}>
-          <div className={classes.cardDetails}>
-            <CardContent>
-              <Typography className={classes.title} component="h2" variant="h5">
-                Biography
-              </Typography>          
-              <Typography style={{textAlign: "left", marginLeft: 22, fontFamily: "Inter", marginBottom: 7, marginTop: 7,
-            display:"flex", alignItems:"center", flexWrap:"wrap"}} variant="subtitle1" color="textSecondary">
-                <WbSunnyIcon style={{marginRight: 5}}></WbSunnyIcon>Virgo Libra Cusp
-                <FilterHdrIcon style={{marginLeft: 25, marginRight:5}}></FilterHdrIcon> Nature Lover
-                <LocationCityIcon style={{marginLeft: 25, marginRight:5}}> </LocationCityIcon>City Girl
-              </Typography>
-              <Typography className={classes.description} variant="subtitle1" paragraph>
-              Camille is a recent college graduate from UVA currently traveling from city to city exploring what urban life offers while taking advantage of any opportunity to get back to the
-              great outdoors. Educated as a chemical engineer, Camille threw that into the wind to pursue software development and adventure. 
-              Exclusively working for new start-ups as a freelancer, she has been able to have extended stays in NYC, Denver, SF, Seattle, and Barcelona. S
-              he hopes to go next to Austin or London, but, in truth, with her, you never know where she'll be next. Known to be spontaneous and indecisive, 
-              Camille chose this life because it allows her to explore every option that life provides. She loves being a digital nomad because each new city brings new stories and 
+            <h1 style={{fontFamily: "Playfair Display", fontSize: 35, marginTop:190, 
+          }}>━━━━━━━━━━━━━━━━ ABOUT ME ━━━━━━━━━━━━━━━━</h1>
+    
+        <img src={pic} style={{width:"25%",float: "left", marginLeft: "300px", marginTop:"110px", border: "solid", borderColor:"#c4d5c4", borderWidth:"thick"}}></img>
+        <div  justifyContent="flex-start" >
+        <Typography className={classes.title} component="h2" variant="h5" style={{marginTop:"60px", marginLeft:"1660px"}}>
+                My Life
+              </Typography>     
+        <div className={classes.description} 
+        style={{textAlign: "justify", marginRight: "350px", marginLeft: "900px", marginTop:"20px", whiteSpace:"pre-line", }}>
+           <p> Camille is a recent college graduate from UVA currently traveling from city to city exploring what urban life offers while taking advantage of any opportunity to get back to the
+              great outdoors. </p>
+              Educated as a chemical engineer, Camille threw that into the wind to pursue software development and adventure. 
+              Exclusively working for new start-ups as a freelancer, she has been able to have extended stays in NYC, Denver, SF, Seattle, and Barcelona. 
+              
+              <p>She hopes to go next to Austin or London, but, in truth, with her, you never know where she'll be next. Known to be spontaneous and indecisive, 
+              Camille chose this life because it allows her to explore every option that life provides. </p>
+              She loves being a digital nomad because each new city brings new stories and 
               opportunities. She never realized that documenting this way of life would garner such a large following for which she is grateful every day. Her goal is to promote 
-              adventures and positivity. One day she hopes to go to every national park.
-              <p>Her hobbies include hiking, climbing, yoga, snowboarding, and anything with music.</p>
-              <p>She is a Virgo Libra cusp.</p>
-              <p>Best parts of nature: trees, mountains, and rivers</p>
-              <p>Best parts of cities: music and rooftops</p>
-              </Typography>
-              
-            </CardContent>
-          </div>
-        </Card>
-      </CardActionArea>
-      
+              adventures and positivity. One day she hopes to go to every national park.</div>    
+        {/* <div className={classes.quote} 
+        style={{textAlign: "justify", marginRight: "400px", marginLeft: "400px", marginTop:"50px",border: "solid", borderColor: "#c4d5c4"}}
+        ><div style={{marginLeft:20, marginRight:20}}>"{post.data.quote}"</div></div>   */}
+           
+        </div>
+        
+        <Typography className={classes.title} component="h2" variant="h5" style={{marginTop:"60px", marginLeft:"300px"}}>
+                History of Camille's Corner
+              </Typography>  
 
-      <Grid item xs={12} md={12}>
-      <CardActionArea component="a" href="/About" style={{marginLeft: "80px", 
-        marginTop: "30px", 
-         }}>
-        <Card className={classes.card}>
-          <div className={classes.cardDetails}>
-            <CardContent>
-              <Typography className={classes.title} component="h2" variant="h5">
-                History
-              </Typography>          
-              <Typography style={{textAlign: "left", marginLeft: 22, fontFamily: "Inter", marginBottom: 7, marginTop: 7,
-            display:"flex", alignItems:"center", flexWrap:"wrap"}} variant="subtitle1" color="textSecondary">
-                <PublicIcon style={{marginRight: 5}}></PublicIcon>best of both worlds
-                <FilterHdrIcon style={{marginLeft: 25, marginRight:5}}></FilterHdrIcon> Nature Lover
-                <LocationCityIcon style={{marginLeft: 25, marginRight:5}}> </LocationCityIcon>City Girl
-              </Typography>
-              <Typography className={classes.description} variant="subtitle1" paragraph>
-              Camille's Corner started back in the summer of 2019 when Camille first moved to NYC for an internship. 
+              <Grid container spacing={3}>
+        <Grid item xs={7} className={classes.description} style={{paddingLeft:"320px"}}>
+          
+          <p> Camille's Corner started back in the summer of 2019 when Camille first moved to NYC for an internship. 
               Sitting behind a screen all day in the middle of a giant concrete jungle made her long for the proper outdoors. 
+              </p>
               Hopelessly stuck between being drawn to the culture of cities and the allure of Mother Nature, Camille decided to bridge the two worlds through adventure and discovery, 
-              adopting a digital nomad life that took her across the country. The name of the blog comes from the corner in her room 
-              where Camille hung up tapestries that depicted beautiful landscapes juxtaposed against her Soho apartment. 
-              <p>The goal of Camille's Corner is to show others that in every city, nature offers an escape, and no one has to choose only one world.</p>
-              </Typography>
+              adopting a digital nomad life that took her across the country. 
               
-            </CardContent>
+              <p>The name of the blog comes from the corner in her room 
+              where Camille hung up tapestries that depicted beautiful landscapes juxtaposed against her Soho apartment.   </p>
+          
+        </Grid>
+        <Grid item xs={5}>
+        <img src={pic2} style={{width:"40%",float: "right", marginRight: "350px", marginTop:"10px", border: "solid", borderColor:"#c4d5c4", borderWidth:"thick"}}></img>
+        </Grid>
+        </Grid>
+
+        <div className={classes.quote} 
+        style={{textAlign: "justify", marginRight: "400px", marginLeft: "340px",backgroundColor: "#29335C", border:"solid", borderColor:"#29335C", marginTop:40,boxShadow:10, borderWidth:"thin",}}
+        > <div style={{marginLeft:35, marginTop:30}}>
+          <Card style={{backgroundColor: "#c4d5c4"}}>
+            <div style={{marginLeft:30, marginRight:30, color:"#29335C"}}>"The goal of Camille's Corner is to show others that in every city, 
+          nature offers an escape, and no one has to choose only one world."</div></Card></div> </div>
+
+        <h1 style={{fontFamily: "Playfair Display", fontSize: 35, marginTop:100, 
+          }}>━━━━━━━━━━━━━━━━ FUN FACTS ━━━━━━━━━━━━━━━━</h1>
+              
+              <Grid container spacing={3} style={{paddingLeft:"300px", paddingRight:"300px"}}>
+        <Grid item xs={12}>
+          <div className={classes.description} style={{textAlign:"center"}}>
+            Camille is a ... <span style={{fontFamily: "Playfair Display", fontSize:30}}>Virgo Libra Cusp</span>
           </div>
-        </Card>
-      </CardActionArea>
+        </Grid>
+  
+        <Grid item xs>
+          <div className={classes.paper}>
+          <Typography className={classes.title} component="h2" variant="h5" style={{textAlign:"center", paddingLeft:"90px"}}>
+                Best parts of...
+              </Typography>         
+              <Typography className={classes.description} variant="subtitle1" paragraph style={{textAlign:"left", marginLeft:180, marginTop:20}}>
+              
+              <span style={{fontWeight: "bold"}}>NATURE:</span>  <br></br>
+              <div>trees, mountains, and rivers</div>
+              <br></br>
+              <span style={{fontWeight: "bold"}}>CITIES:</span>  <br></br>
+              music, rooftops 
+              </Typography>   
+          </div>
+        </Grid>
+        <Grid item xs>
+          <Typography className={classes.title} component="h2" variant="h5" style={{textAlign:"center"}}>
+          <img src={pic3} style={{width:"70%",border: "solid", borderColor:"#c4d5c4", borderWidth:"thick"}}></img>
+              </Typography>         
+        </Grid>
+        <Grid item xs>
+          <div className={classes.paper}>
+          <Typography className={classes.title} component="h2" variant="h5" style={{textAlign:"center", paddingRight:"100px"}}>
+                Hobbies
+              </Typography>       
+              <Typography className={classes.description} variant="subtitle1" paragraph style={{textAlign:"center", paddingRight:"100px"}}>
+              
+              HIKING <br></br>
+              CLIMBING <br></br>
+              YOGA <br></br>
+              SNOWBOARDING <br></br>
+              MUSIC
+              </Typography>   
+          </div>
+        </Grid>
+      </Grid>
       
-    </Grid>
-
-
-    </Grid>
-
-    </Grid>
           </div>
       )
   }

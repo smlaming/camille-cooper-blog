@@ -37,7 +37,7 @@ function DisplayCart() {
 
   return (
     <div>
-      <h1>Your Cart</h1>
+      <h1 style={{fontFamily: "Playfair Display", fontSize: 35, marginTop:190}}>YOUR CART</h1>
       <Link to="/">
         <Button>Back To Shopping</Button>
       </Link>
