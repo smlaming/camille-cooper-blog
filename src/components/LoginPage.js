@@ -57,7 +57,7 @@ const LoginPage = () => {
     return (
         <div>
 
-            <div>
+            <div style={{float: "right", marginRight: "210px", marginTop:"180px"}}>
           
                 <h1 className={classes.darkblue}>Login</h1>
                 <form
