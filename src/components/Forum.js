@@ -55,7 +55,7 @@ const Forum = () => {
     return (
       <div >
         <div style={{marginTop:"190px"}}>
-        <h1 style={{fontFamily: "Playfair Display", fontSize: 35}}>Welcome to the Forum!</h1>
+        <h1 style={{fontFamily: "Playfair Display", fontSize: 35}}>THE FORUM</h1>
         <div style={{fontFamily: "Inter", fontSize:20}}>Feel free to chat with the community ☺ </div></div>
         <div style={{marginRight:"600px", marginLeft:"600px",  marginTop:"40px"}}>
           <Box boxShadow={2}>

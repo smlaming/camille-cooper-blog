@@ -40,11 +40,12 @@ function DisplayStore() {
 
   return (
     <div>
-      <h1>The Store</h1>
-      <Link to="/myCart">
+      <h1 style={{fontFamily: "Playfair Display", fontSize: 35, marginTop:190}}>THE STORE</h1>
+      <Link to="/myCart" style={{color:"black"}}>
         <IconButton style={{ bottom: 7, right: 3 }}>
           <ShoppingCartIcon />
         </IconButton>
+        GO TO CART
       </Link>
 
       <GridList style={{ justifyContent: "center" }}>
