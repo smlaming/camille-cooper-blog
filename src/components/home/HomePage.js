@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Button, Box } from "@material-ui/core";
+import { Button, Box, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -124,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
       
     </Grid>
 
-    <Grid item xs={12} md={6}>
+    {/* <Grid item xs={12} md={6}>
       <CardActionArea component="a" href="/About" style={{marginLeft: "80px", 
         marginTop: "30px", 
          }}>
@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme) => ({
         </Card>
       </CardActionArea>
       
-    </Grid>
+    </Grid> */}
 
     <Grid item xs={12} md={6}>
       <CardActionArea component="a" href="/Blog" style={{marginLeft: "80px", 
@@ -169,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
             
              <img style={{width:200, float:"left", marginLeft:20, marginBottom: 20 , marginRight: 30, marginTop: 10}} src="https://i.pinimg.com/564x/9e/e0/5a/9ee05aa459a61e1c5fbdf4626207f4a5.jpg"/>
              <Typography style={{textAlign: "left", marginLeft: 20, fontFamily: "Inter"}} variant="subtitle1" color="textSecondary">
-                June 8th, 2021
+                June 10th, 2021
               </Typography>
               <Typography className={classes.title2} component="h2" variant="h5">
                 Collection Dropping Soon!
@@ -190,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
       
     </Grid>
 
-    <Grid item xs={12} md={6}>
+    {/* <Grid item xs={12} md={6}>
       <CardActionArea component="a" href="/About" style={{marginLeft: "80px", 
         marginTop: "30px", 
          }}>
@@ -214,9 +214,53 @@ const useStyles = makeStyles((theme) => ({
             </CardContent>
           </div>
         </Card>
-      </CardActionArea>
+      </CardActionArea> */}
       
-    </Grid>
+    {/* </Grid> */}
+    <Grid item xs={12}  style={{marginLeft: "80px", marginRight:"10px", marginTop:"20px",marginBottom:"20px"}}>
+          <Paper className={classes.paper}>
+          <Typography className={classes.title} component="h2" variant="h5" style={{textAlign: "center"}}>
+               <div style={{paddingTop:20, paddingBottom:25}}>New Arrivals</div> 
+              </Typography>
+              
+
+              <Grid container spacing={3}>
+        <Grid item xs>
+        <Typography className={classes.title2} component="h2" variant="h5" style={{textAlign: "center"}}>
+                Floral Bucket Hat
+              </Typography>
+              <img style={{width:"240px"}} src="https://cdn.shopify.com/s/files/1/2576/1948/products/2015_Bucket_Hat_Floral-01_1024x1024.png?v=1534389802"></img>
+              <Typography className={classes.description} variant="subtitle1" paragraph style={{textAlign: "center"}}>
+              Price: 24.99
+              </Typography>
+        </Grid>
+        <Grid item xs>
+
+          <Typography className={classes.title2} component="h2" variant="h5" style={{textAlign: "center"}}>
+                Lotion Sunscreen
+              </Typography>
+              <img style={{width:"240px"}} src="https://www.aveeno.com/sites/aveeno_us_2/files/product-images/3ave_381371194605_ph_sunscreen_spf60_body_lotion_3oz_00000.png"></img>
+              <Typography className={classes.description} variant="subtitle1" paragraph style={{textAlign: "center"}}>
+              Price: 7.99
+              </Typography>
+        </Grid>
+        <Grid item xs>
+        <Typography className={classes.title2} component="h2" variant="h5" style={{textAlign: "center"}}>
+                Red Towel
+              </Typography>
+              <img style={{width:"240px"}} src="https://d19kq6msjbswuw.cloudfront.net/api/file/NiumstaTDCzc57JQkoRg/convert?w=1000"></img>
+              <Typography className={classes.description} variant="subtitle1" paragraph style={{textAlign: "center"}}>
+              Price: 19.99
+              </Typography>
+        </Grid>
+      </Grid>
+      <div style={{paddingBottom:25,}}>
+              <Link variant="subtitle1" href="/Store" style={{color: "black", 
+             paddingTop:20,  fontFamily: "inter", fontWeight:"bold"}}>
+              —  GO TO STORE
+              </Link></div>
+          </Paper>
+        </Grid>
 
     </Grid>
           </div>
