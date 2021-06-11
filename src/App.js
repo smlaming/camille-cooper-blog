@@ -14,6 +14,7 @@ import Blog from "./components/blog/bloglist";
 import BlogPost from "./components/blog/blogpost";
 import Account from "./components/AccountPage";
 import Footer from "./components/header/Footer";
+import Home from "./components/home/HomePage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/BlogPost" component={BlogPost} />
           <Route path="/Forum" component={Forum} />
           <Route path="/myCart" component={Cart} />
+          <Route path="/ShoppingCart" component={Cart} />
           <Route path="/login" component={LoginPage} />
           <Route path="/sign_up" component={SignUpPage} />
           <Route path="/forum" component={Forum} />
@@ -39,10 +41,6 @@ function App() {
   );
 }
 
-const Home = () => (
-  <Fragment>
-    <h1 style={{ marginTop: 160 }}>Welcome!!!</h1>
-  </Fragment>
-);
+
 
 export default App;
