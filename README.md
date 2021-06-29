@@ -33,7 +33,14 @@ This is a place for Camille to sell her products to her fans. Since this site wa
 
 ## How this was built
 
-The Backbone of this project 
+This project is written in React and used react-router to manage the various pages. In addition to react, Google Firebase was used for the backend. We used a firestore database to store all of the data and users for this site.
+
+## Group Members
+
+*David Hasani
+*Stephen Laming
+*Kayla Lewis
+*Brittany Sandoval-Rivera
 
 
 
