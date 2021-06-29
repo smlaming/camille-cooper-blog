@@ -27,7 +27,7 @@ This page is a place for Camille to post updates about her life. This page has b
 Here is a place for for Camille's fans to post questions and get answers from either other fans or Camille herself! This page was a later addition to the project, and could use some more styling. 
 
 ### Store
-![](CamilleStore.gif)
+![](CamileStore.gif)
 
 This is a place for Camille to sell her products to her fans. Since this site was an excercise, and Camille does not actually have any fans/products, there is no way to actually purchase any items. But, my team and I belive the Stripe API could be implemented very easily.
 
