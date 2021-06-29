@@ -6,7 +6,7 @@ This site has five main pages: Home, About, Blog, Forum, and Store.
 
 ### Home
 
-![](CamilleHomePage.gif)
+![](CamilleHomepage.gif)
 
 This page is the landing page for users. Here they are shown a little bit about Camille, her most recent blog post, and new arrivals in her store. This page was deisgned so the user wasn't overwhelmed when first enetering this site, and could digests the various pages and where they wanted to go. 
 
