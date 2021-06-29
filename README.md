@@ -37,10 +37,10 @@ This project is written in React and used react-router to manage the various pag
 
 ## Group Members
 
-*David Hasani
-*Stephen Laming
-*Kayla Lewis
-*Brittany Sandoval-Rivera
+* David Hasani
+* Stephen Laming
+* Kayla Lewis
+* Brittany Sandoval-Rivera
 
 
 
